@@ -41,7 +41,6 @@ picture{display:contents}
 .day .poster{margin-top:8px}
 .day b{font-size:13px;font-weight:700;color:var(--ink-3)}
 .day.today b{color:var(--accent-text)}
-.day.today b::after{content:" · Tonight 今晚";}
 .proof{padding-top:48px}
 .rating{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:6px}
 .rating strong{font-size:2.4rem;font-weight:700;letter-spacing:-.03em;line-height:1}
@@ -764,7 +763,7 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
   <script>
   (function(){var d=new Date(Date.now()+8*36e5).toISOString().slice(0,10),el=document.querySelector('.day[data-date="'+d+'"]');if(!el)return;el.classList.add("today");var c=document.getElementById("days");c.scrollLeft=el.offsetLeft-c.offsetLeft;})();
   </script>
-<script>(function(){var d=document.querySelectorAll('#days .day[data-date]');if(!d.length)return;var last=d[d.length-1].getAttribute('data-date');var t=new Date(Date.now()+8*3600e3).toISOString().slice(0,10);if(last<t){var s=document.getElementById('week');s.classList.add('week-stale');var h=document.getElementById('week-h');h.innerHTML='Live band every night<em>每晚现场乐队</em>';var n=s.querySelector('.week-note')||document.createElement('p');n.className='week-note';n.innerHTML='Tonight\u2019s singer is posted daily on <a href="https://instagram.com/nana.ss13" target="_blank" rel="noopener">@nana.ss13</a>.';if(!n.parentNode)h.after(n);}else{d.forEach(function(x){if(x.getAttribute('data-date')===t){x.querySelector('b').textContent='Tonight \u00b7 '+x.querySelector('b').textContent;}});}})();</script>
+<script>(function(){var d=document.querySelectorAll('#days .day[data-date]');if(!d.length)return;var last=d[d.length-1].getAttribute('data-date');var t=new Date(Date.now()+8*3600e3).toISOString().slice(0,10);if(last<t){var s=document.getElementById('week');s.classList.add('week-stale');var h=document.getElementById('week-h');h.innerHTML='Live band every night<em>每晚现场乐队</em>';var n=s.querySelector('.week-note')||document.createElement('p');n.className='week-note';n.innerHTML='Tonight\u2019s singer is posted daily on <a href="https://instagram.com/nana.ss13" target="_blank" rel="noopener">@nana.ss13</a>.';if(!n.parentNode)h.after(n);}else{d.forEach(function(x){if(x.getAttribute('data-date')===t){x.querySelector('b').textContent='Tonight \u4eca\u665a \u00b7 '+x.querySelector('b').textContent;}});}})();</script>
 <script>
 (function(){var d=new Date(Date.now()+8*36e5).toISOString().slice(0,10),el=document.querySelector('.day[data-date="'+d+'"]'),t=document.getElementById("cx-tonight");if(el&&t){t.hidden=false;}
 var st=function(){var v=document.querySelector("video.cx-bg"),n=navigator.connection||{};if(!v||n.saveData||matchMedia("(prefers-reduced-motion:reduce)").matches)return;var m=matchMedia("(max-width:759px)").matches;[["webm","video/webm"],["mp4","video/mp4"]].forEach(function(x){var s=document.createElement("source");s.src=v.dataset[(m?"m":"")+x[0]];s.type=x[1];v.appendChild(s);});v.poster=(m?document.querySelector(".cx-hero source[media]").srcset:document.querySelector("img.cx-bg").src);v.load();v.addEventListener("playing",function(){v.classList.add("on")});var p=v.play();if(p)p.catch(function(){});};requestAnimationFrame(function(){setTimeout(st,0)});})();

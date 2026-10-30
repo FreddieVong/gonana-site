@@ -33,6 +33,7 @@
 /* Same as Nana Play: the top is the app's Tonight (day row, swipeable posters, who's on),
    then the menu pages, happy hour and where to find us. White paper, ink headings,
    forest buttons, teal only for small labels and rules. */
+@font-face{font-family:Anton;font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/anton-latin.woff2) format("woff2")}
 @font-face{font-family:"Instrument Sans";font-style:normal;font-weight:400 700;font-display:swap;src:url(assets/fonts/instrument-sans-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 :root{--paper:#fff;--mist:#f6f8f7;--ink:#172923;--ink-2:#56675f;--ink-3:#64756f;--teal:#3aafa9;--teal-text:#1c736f;--forest:#14453d;--forest-deep:#0f3630;--line:#e7ece9;--line-strong:#d6deda;--r-sm:10px;--r-md:14px;--gutter:20px}
 *{box-sizing:border-box;margin:0}
@@ -87,6 +88,8 @@ picture{display:contents}
 .week-note{display:none;color:var(--ink-2);margin-top:8px}
 .week-note a{color:var(--teal-text);font-weight:600;text-decoration:underline;text-underline-offset:3px}
 .week-off .week-note{display:block}
+/* computers only: the food menu cover's line, in its heavy condensed capitals */
+.slogan{display:none}
 
 /* sections below */
 .sec{padding-top:56px}
@@ -141,7 +144,10 @@ footer a{color:var(--teal-text);font-weight:600}
   .top{padding:24px 0 16px}
   .tonight{display:grid;grid-template-columns:440px minmax(0,1fr);column-gap:64px;align-items:center}
   .tonight .week{grid-column:1}
-  .tonight .right{grid-column:2;padding-top:60px}
+  .tonight .right{grid-column:2}
+  .slogan{display:block;font-family:Anton,"Arial Narrow",Impact,sans-serif;font-weight:400;text-transform:uppercase;font-size:clamp(44px,5.8vw,86px);line-height:.9;letter-spacing:.005em;color:var(--forest);margin-bottom:40px}
+  .slogan span{display:block}
+  .slogan span+span{color:var(--teal);border-top:1.5px solid var(--line-strong);margin-top:.14em;padding-top:.12em}
   .who{margin-top:0}
   .who h1{font-size:48px;letter-spacing:-.03em}
   .cta{display:flex;align-items:center;gap:20px;margin-top:24px}
@@ -269,6 +275,7 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
           </div>
         </div>
         <div class="right">
+          <p class="slogan"><span>Dinner first,</span><span>music later.</span></p>
           <div class="who" aria-live="polite"><p id="who-when">This week · 9pm</p><h1 id="who-names">Live band every night</h1><p class="week-note">The week's singers go up every Monday on <a href="https://instagram.com/nana.ss13" target="_blank" rel="noopener">@nana.ss13</a>.</p></div>
           <div class="cta"><a class="btn" id="hero-book" href="https://wa.me/60128974221?text=Hi%20nana%2C%20I%27d%20like%20to%20book.%20Date%3A%20%20Time%3A%20%20Pax%3A" target="_blank" rel="noopener">Book a table <span lang="zh">订位</span></a><small>Any night, sent to us on WhatsApp. No deposit.</small></div>
         </div>
@@ -320,7 +327,7 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
           var d = dates[i], p = part(d);
           when.textContent = label(d) + " · 9pm";
           when.className = d === today ? "is-today" : "";
-          head.textContent = nights[i].getAttribute("data-names");
+          head.textContent = nights[i].getAttribute("data-names").replace(/ \u00b7 /g, "\u00a0\u00b7 ");  // break after the dot, never before
           var text = "Hi nana, I'd like to book. Date: " + (d >= today ? p.wd + " " + p.day + " " + p.mo : "") + "  Time:  Pax:";
           books.forEach(function (a) { if (a) a.href = "https://wa.me/60128974221?text=" + encodeURIComponent(text); });
         }

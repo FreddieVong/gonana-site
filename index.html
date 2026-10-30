@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#3FB4A7">
+  <meta name="description" content="nana 研酒所 — Japanese social live music bar at 2 Jalan SS 13/3A, SS13 Subang Jaya. Dinner from 5pm, live music from 9pm, open daily till 2am. Happy hour before 8:30pm. WhatsApp +60 12-897 4221 to book.">
+  <meta property="og:site_name" content="nana 研酒所">
+  <meta property="og:title" content="nana 研酒所 · Live Music Bar in SS13 Subang Jaya">
+  <meta property="og:description" content="Dinner first, music later. Daily 5pm–2am at 2 Jalan SS 13/3A, SS13 Subang Jaya; live from 9pm. WhatsApp +60 12-897 4221 to book.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gonana.my/">
+  <meta property="og:image" content="https://gonana.my/assets/og-card.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="nana 研酒所 · live music bar, SS13 Subang Jaya · daily 5pm–2am · live from 9pm">
+  <meta property="og:locale" content="en_MY">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="nana 研酒所 · Live Music Bar in SS13 Subang Jaya">
+  <meta name="twitter:description" content="Dinner first, music later. Daily 5pm–2am at 2 Jalan SS 13/3A, SS13 Subang Jaya; live from 9pm. WhatsApp +60 12-897 4221 to book.">
+  <meta name="twitter:image" content="https://gonana.my/assets/og-card.jpg">
+  <link rel="canonical" href="https://gonana.my/">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <title>nana 研酒所 · Live Music Bar in SS13 Subang Jaya · 梳邦现场音乐酒吧</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <style>
+@font-face{font-family:"Instrument Sans";font-style:normal;font-weight:400 700;font-display:swap;src:url(assets/fonts/instrument-sans-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+picture{display:contents}
+.week{padding-top:40px}
+.week-note{color:var(--ink-3);font-size:13.5px;margin-top:6px}
+.poster{display:block;margin-top:16px;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--line);max-width:30rem;background:var(--mist)}
+.poster img{display:block;width:100%;height:auto}
+.days{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;margin-top:16px;scrollbar-width:none}
+.days::-webkit-scrollbar{display:none}
+.day{flex:0 0 78%;max-width:22rem;scroll-snap-align:start;text-decoration:none;color:inherit}
+.day .poster{margin-top:8px}
+.day b{font-size:13px;font-weight:700;color:var(--ink-3)}
+.day.today b{color:var(--accent-text)}
+.day.today b::after{content:" · Tonight 今晚";}
+.proof{padding-top:48px}
+.rating{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:6px}
+.rating strong{font-size:2.4rem;font-weight:700;letter-spacing:-.03em;line-height:1}
+.rating .stars{color:var(--accent-text);font-size:1.1rem;letter-spacing:.05em}
+.rating small{color:var(--ink-3);font-size:13px}
+.quotes{display:grid;gap:10px;margin-top:18px;list-style:none;padding:0}
+.quotes li{border:1px solid var(--line);border-radius:var(--r-md);padding:16px;border-left:3px solid var(--rule)}
+.quotes q{display:block;font-size:15.5px;line-height:1.5;color:var(--ink);quotes:"“" "”"}
+.quotes cite{display:block;margin-top:8px;font-style:normal;font-size:12.5px;font-weight:600;color:var(--ink-3)}
+@media(min-width:760px){.quotes{grid-template-columns:repeat(3,1fr)}.days .day{flex-basis:15rem}main #week,main #proof{grid-column:1/-1}}
+.js .rv{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.js .rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}}
+
+:root{--paper:#fff;--mist:#f6f8f7;--mist-deep:#eef2f0;--line:#e7ece9;--line-strong:#d6deda;
+--ink:#172923;--ink-2:#56675f;--ink-3:#64756f;--r-xs:6px;--r-sm:10px;--r-md:14px;--r-lg:18px;--gutter:1.25rem;--max:1040px;--hero:#fff;--on-hero:#172923;--on-hero-line:#d6deda;--on-hero-hover:#f6f8f7;--rule:#3FB4A7;--btn:#3FB4A7;--btn-deep:#36A094;--on-btn:#0B2B27;--on-accent-btn:#0B2B27;--accent:#1C7A70;--accent-text:#1C736F;--accent-soft:#E4F2F0;--accent-btn:#3FB4A7;--logo-bg:#fff;}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:"Instrument Sans","Noto Sans SC",system-ui,sans-serif;font-size:15.5px;line-height:1.55;-webkit-font-smoothing:antialiased}
+[lang="zh"]{font-family:"Noto Sans SC","Instrument Sans",sans-serif}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:16px;top:-60px;z-index:40;background:var(--ink);color:#fff;font-weight:600;font-size:.85rem;padding:12px 18px;border-radius:var(--r-sm);text-decoration:none}
+.skip:focus{top:14px}
+.wrap{width:min(var(--max),100%);margin:0 auto;padding:0 var(--gutter) 110px}
+.top{background:var(--hero);color:var(--on-hero);margin:0 calc(50% - 50vw);padding:0 max(var(--gutter),calc(50vw - var(--max)/2 + var(--gutter)))}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:max(1.1rem,env(safe-area-inset-top)) 0 .5rem}
+.nav-brand{font-weight:700;font-size:.95rem;letter-spacing:-.01em;text-decoration:none}
+.nav-brand span,.nav-brand b{font-weight:500;opacity:.8}
+.nav-chip,.nav-live{font-size:12.5px;font-weight:600;padding:5px 10px;border-radius:var(--r-xs);border:1px solid var(--on-hero-line);white-space:nowrap}
+.hero{display:grid;gap:0;padding:28px 0 40px;animation:up .5s ease both}
+.logo-orb,.logo-stage{width:132px;aspect-ratio:1;border-radius:var(--r-lg);overflow:hidden;background:var(--logo-bg);margin-bottom:26px;box-shadow:0 1px 0 rgba(0,0,0,.04)}
+.logo-orb img,.logo-stage img{display:block;width:100%;height:100%;object-fit:contain}
+.kicker,.place{font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--accent-text);margin-bottom:10px}
+h1{font-weight:700;font-size:clamp(2.3rem,10vw,3.6rem);line-height:1.02;letter-spacing:-.035em;max-width:14ch;margin-bottom:14px}
+h1 .soft{color:var(--accent-text)}
+h1::after{content:"";display:block;width:48px;height:3px;border-radius:2px;background:var(--rule);margin-top:18px}
+.top{border-bottom:1px solid var(--line)}
+.logo-orb,.logo-stage{border:1px solid var(--line)}
+.btn-primary{font-weight:700}
+.h1-brand{display:block;font-size:.95rem;font-weight:600;letter-spacing:0;margin-bottom:12px;opacity:.85}
+.zh-line{font-size:1.02rem;font-weight:500;opacity:.85;margin-bottom:26px}
+.cta-stack{display:grid;gap:10px;max-width:26rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;font-weight:600;font-size:15.5px;text-decoration:none;border-radius:var(--r-sm);transition:background-color .15s,color .15s,border-color .15s,transform .1s}
+.btn:active{transform:scale(.985)}
+.btn-primary{background:var(--btn);color:var(--on-btn);min-height:52px}
+.btn-primary:hover{background:var(--btn-deep)}
+.btn-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn-ghost{background:transparent;border:1px solid var(--on-hero-line);color:inherit;font-size:14.5px}
+.btn-ghost:hover{background:var(--on-hero-hover)}
+.hint{margin-top:12px;font-size:12.5px;opacity:.8;max-width:26rem}
+main .btn-ghost,.play-btn{border-color:var(--line-strong);color:var(--ink)}
+main .btn-ghost:hover{background:var(--mist)}
+.ribbon,.pulse{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;margin:24px 0 0;font-size:12.5px;color:var(--ink-3)}
+.ribbon span,.pulse span{background:var(--paper);padding:14px 12px;display:flex;flex-direction:column;gap:2px}
+.ribbon b,.pulse b{color:var(--ink);font-weight:700;font-size:15px;letter-spacing:-.01em}
+.policy-band{margin:16px 0 0;padding:14px 16px;border-radius:var(--r-md);background:var(--accent-soft);font-size:14px;color:var(--ink-2)}
+.policy-band strong{color:var(--ink);font-weight:600}
+.policy-band [lang="zh"]{display:block;margin-top:4px;font-size:13.5px}
+.block{padding:48px 0 0}
+.block-label{font-size:12px;font-weight:600;color:var(--accent-text);margin-bottom:6px}
+.block h2{font-size:clamp(1.6rem,6vw,2.1rem);font-weight:700;letter-spacing:-.03em;line-height:1.1;margin-bottom:8px}
+.block h2 em{font-style:normal;color:var(--ink-3);font-weight:500;font-size:.95rem;margin-left:10px;letter-spacing:0;font-family:"Noto Sans SC",sans-serif}
+.facts-list{list-style:none;padding:8px 0 0;font-size:15px}
+.facts-list li{padding:11px 0;border-bottom:1px solid var(--line);color:var(--ink-2)}
+.facts-list li:last-child{border-bottom:0}
+.facts-list a,.rule a,.faq a,.play-body a{color:var(--accent-text);font-weight:600;text-underline-offset:3px}
+.rule{list-style:none;padding:8px 0 0}
+.rule li{display:grid;grid-template-columns:7.5rem 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.rule li:last-child{border-bottom:0}
+.rule .k{color:var(--ink-3);font-size:13.5px;font-weight:500}
+.rule .v{font-weight:600;font-size:15px;line-height:1.45}
+.play-body{color:var(--ink-2);padding-top:6px}
+.play-body [lang="zh"]{display:block;margin-top:6px}
+.play-btn{width:100%;margin-top:16px;max-width:26rem}
+.contact-list{padding-top:8px}
+.contact-list a{display:flex;justify-content:space-between;align-items:center;min-height:52px;border-bottom:1px solid var(--line);text-decoration:none;font-weight:600}
+.contact-list a:last-child{border-bottom:0}
+.contact-list a span{color:var(--accent-text);font-size:13.5px}
+.faq details,.menu-text details{border-bottom:1px solid var(--line)}
+.faq summary,.menu-text summary{list-style:none;cursor:pointer;font-weight:600;font-size:15.5px;line-height:1.4;min-height:52px;padding:14px 2px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker,.menu-text summary::-webkit-details-marker{display:none}
+.faq summary .q{flex:1}
+.faq summary::after,.menu-text summary::after{content:"";flex:0 0 auto;width:8px;height:8px;margin:.45em 4px 0 auto;border-right:2px solid var(--ink-3);border-bottom:2px solid var(--ink-3);transform:rotate(45deg);transition:transform .2s}
+.faq details[open] summary::after,.menu-text details[open] summary::after{transform:rotate(225deg)}
+.faq summary [lang="zh"],.menu-text summary [lang="zh"]{font-weight:500;color:var(--ink-3)}
+.faq p{color:var(--ink-2);font-size:15px;padding:0 2px 16px;animation:fade .2s ease both}
+.faq p [lang="zh"]{display:block;margin-top:8px}
+@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-3)}
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px var(--gutter) calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.94);border-top:1px solid var(--line);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.sticky .btn{width:100%;display:flex;background:var(--accent-btn);color:var(--on-accent-btn)}
+.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.menu-tile{display:block;text-decoration:none;color:inherit;overflow:hidden;border-radius:var(--r-md);border:1px solid var(--line);background:var(--paper);transition:border-color .15s,transform .1s}
+.menu-tile:hover{border-color:var(--line-strong)}
+.menu-tile:active{transform:scale(.985)}
+.menu-tile .thumb{display:block;width:100%;height:auto;background:var(--mist)}
+.menu-tile .meta{padding:12px 14px;border-top:1px solid var(--line);display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.menu-tile .meta strong{font-weight:600;font-size:15px}
+.menu-tile .meta strong [lang="zh"]{color:var(--ink-3);font-weight:500;font-size:12.5px;margin-left:6px}
+.menu-tile .meta .open{font-size:12.5px;font-weight:600;color:var(--accent-text);white-space:nowrap}
+.pager-wrap{margin-top:24px}
+.pager-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
+.pager-nav{display:flex;align-items:center;gap:8px}
+.pager-btn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;padding:0;border-radius:var(--r-sm);border:1px solid var(--line-strong);background:var(--paper);color:var(--ink);cursor:pointer}
+.pager-btn svg{width:16px;height:16px}
+.pager-btn:hover:not(:disabled){background:var(--mist)}
+.pager-btn:disabled{opacity:.35;cursor:default}
+.pager-label{font-size:12.5px;font-weight:600;color:var(--ink-3)}
+.pager-count{font-size:12.5px;font-weight:600;color:var(--ink);white-space:nowrap}
+.pager{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.pager::-webkit-scrollbar{display:none}
+.pager .page{flex:0 0 88%;scroll-snap-align:center;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--line);background:var(--mist)}
+.pager .page img{display:block;width:100%;height:auto}
+.menu-note{margin-top:10px;font-size:12.5px;color:var(--ink-3)}
+.menu-text{margin-top:32px}
+.menu-text h3{font-size:1.15rem;font-weight:700;letter-spacing:-.02em;margin-bottom:4px}
+.menu-text>p{color:var(--ink-3);font-size:13.5px;margin-bottom:8px}
+.menu-text .sub{color:var(--ink-3);font-size:13.5px;padding:0 2px 6px}
+.menu-text ul{list-style:none;padding:0 2px 14px}
+.menu-text li{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:8px 0;font-size:15px;color:var(--ink-2);border-bottom:1px dashed var(--line)}
+.menu-text li:last-child{border-bottom:0}
+.menu-text li small{display:block;color:var(--ink-3);font-size:12.5px}
+.menu-text .p{flex:0 0 auto;text-align:right;font-weight:700;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums}
+.menu-text .p small{color:var(--accent-text);font-weight:600}
+@media(min-width:760px){
+ :root{--gutter:2rem}
+ .wrap{padding-bottom:56px}
+ .sticky{display:none}
+ .hero{grid-template-columns:minmax(0,1fr) 300px;column-gap:56px;padding:56px 0 72px;align-items:start}
+ .hero>*{grid-column:1}
+ .logo-orb,.logo-stage{grid-column:2;grid-row:1/span 7;width:300px;margin:0}
+ .ribbon,.pulse{margin-top:32px}
+ main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:56px}
+ main #menu,main #faq,main #facts{grid-column:1/-1}
+ .pager .page{flex-basis:38%}
+ .pager{scrollbar-width:thin;scrollbar-color:var(--line-strong) transparent}
+ .pager::-webkit-scrollbar{display:block;height:6px}
+ .pager::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:999px}
+ .rule li{grid-template-columns:8.5rem 1fr}
+}
+@media(max-width:380px){.rule li{grid-template-columns:1fr;gap:4px}.ribbon,.pulse{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+.nav-brand .lock,.nav-brand .lock span,.h1-brand .lock{opacity:1}.h1-brand:has(.lock){opacity:1}.lock{display:inline-flex;align-items:flex-start;gap:.35em;line-height:1;color:#14453d}.lock .lt{font-weight:500;letter-spacing:-.01em}.lock .wm{display:block;height:2.1em;width:auto;margin:-.08em 0 -1.1em}.nav-brand{font-size:1.15rem;padding-bottom:.6em}.lock-lg{font-size:1.6rem;margin:0 0 .9em}.h1-brand .lock-lg{display:inline-flex}.reel{margin:24px 0 0;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--line);background:#111;aspect-ratio:16/9}.reel video{display:block;width:100%;height:100%;object-fit:cover}.reel-cap{margin-top:8px;font-size:12.5px;font-weight:600;color:var(--accent-text)}.final{margin-top:48px;padding:28px 0 0;border-top:1px solid var(--line)}.final h2{font-size:clamp(1.6rem,6vw,2.1rem);font-weight:700;letter-spacing:-.03em;margin-bottom:14px}.final .btn{width:100%;max-width:26rem}.v .lk{color:var(--accent-text);font-weight:600;text-underline-offset:3px}.tabs{display:inline-flex;margin-top:16px;border:1px solid var(--line-strong);border-radius:var(--r-sm);overflow:hidden}.tab{appearance:none;border:0;background:var(--paper);color:var(--ink-2);font:inherit;font-weight:600;font-size:14.5px;min-height:44px;padding:0 20px;cursor:pointer}.tab+.tab{border-left:1px solid var(--line-strong)}.tab[aria-selected="true"]{background:var(--btn);color:var(--on-btn)}.pager-wrap[hidden]{display:none}.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media (max-width:759px){.logo-orb,.logo-stage{width:64px;margin-bottom:14px}}
+.proof-line{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:14px;font-weight:600;margin:0 0 18px;padding:0;list-style:none}
+.proof-line li{display:flex;align-items:center;gap:6px}
+.proof-line a{color:inherit}
+.hero .hint{font-size:13px;opacity:.75;margin-top:8px}
+.week-stale .days{display:none}
+</style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BarOrPub",
+    "@id": "https://gonana.my/#venue",
+    "name": "nana 研酒所",
+    "alternateName": ["研酒所", "nana", "nana SS13"],
+    "description": "Japanese social live music bar in SS13, Subang Jaya. Dinner from 5pm, live music from 9pm, open daily until 2am. Happy hour before 8:30pm. Under-18 guests must leave by 8:30pm; strictly 18+ after.",
+    "url": "https://gonana.my/",
+    "image": [
+      "https://gonana.my/assets/og-card.jpg",
+      "https://gonana.my/assets/logo.png"
+    ],
+    "logo": "https://gonana.my/assets/logo.png",
+    "telephone": "+60128974221",
+    "currenciesAccepted": "MYR",
+    "priceRange": "RM10–RM60 (food)",
+    "servesCuisine": ["Japanese", "Fusion", "Western"],
+    "smokingAllowed": false,
+    "acceptsReservations": "https://wa.me/60128974221",
+    "amenityFeature": [
+      { "@type": "LocationFeatureSpecification", "name": "Live music nightly from 9pm", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Happy hour before 8:30pm", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Bottle keeping (spirits 60 days, beer 30 days)", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Late-night ramen 9:30pm–12:30am", "value": true }
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "2, Jalan SS 13/3A, Subang Jaya Industrial Estate",
+      "addressLocality": "Subang Jaya",
+      "addressRegion": "Selangor",
+      "postalCode": "47500",
+      "addressCountry": "MY"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 3.0711964,
+      "longitude": 101.5972605
+    },
+    "openingHours": "Mo-Su 17:00-02:00",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "17:00",
+        "closes": "02:00"
+      }
+    ],
+    "hasMenu": [
+      {
+        "@type": "Menu",
+        "name": "nana 研酒所 full menu (text, prices in RM)",
+        "url": "https://gonana.my/#menu-text",
+        "inLanguage": ["en", "zh"]
+      },
+      {
+        "@type": "Menu",
+        "name": "nana 研酒所 food menu (PDF)",
+        "url": "https://gonana.my/assets/menu/food.pdf",
+        "inLanguage": ["en", "zh"]
+      },
+      {
+        "@type": "Menu",
+        "name": "nana 研酒所 drinks menu (PDF)",
+        "url": "https://gonana.my/assets/menu/drinks.pdf",
+        "inLanguage": ["en", "zh"]
+      }
+    ],
+    "hasMap": "https://maps.app.goo.gl/CddBMPbaehJuaard7",
+    "sameAs": [
+      "https://instagram.com/nana.ss13",
+      "https://maps.app.goo.gl/CddBMPbaehJuaard7"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can I bring someone under 18 to nana 研酒所?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, in the early evening — under-18 guests must leave by 8:30pm, and the venue is strictly 18+ after that. 可以在傍晚时段来，未满 18 岁须在 8:30pm 前离开，之后严格 18+。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I smoke or vape at nana 研酒所?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "E-cigarettes and vapes are fine; cigarette smoking is not allowed inside. 电子烟 / vape 可以，场内不可抽烟。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a minimum spend at nana 研酒所?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Only the stage sofa carries a RM300 minimum, and only on Fri, Sat and public-holiday-eve nights. On weekdays and the public-holiday day itself there is no sofa minimum. 只有舞台沙发有 RM300 最低消费，且仅限周五、周六和公假前夕。平日和公假当天没有沙发最低消费。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to book at nana 研酒所? Is there a deposit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Walk-ins are welcome any day; on Fri, Sat and public-holiday eves it's worth a WhatsApp ahead to +60 12-897 4221. No deposit — the table is held for 15 minutes past your booking time. Confirmations come in English; chat in English or Chinese. 每天都欢迎 walk-in；周五、周六和公假前夕建议先 WhatsApp 订位。无需订金，座位保留 15 分钟。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are nana 研酒所's opening hours, and when does the band play?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Open 5pm–2am daily; live music starts at 9pm. The full week's line-up goes up every Monday in the This week section of this site and on Instagram (@nana.ss13). 每天 5pm–2am 营业，现场 9pm 开始。每周一在本网站“本周阵容”和 Instagram 公布整周演出安排。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does nana 研酒所 serve food?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — dinner first, music later. The kitchen serves 800g pots of fresh clams (lala) from RM50, crispy hand-rolls from RM12, hand-wrap rice, pasta, pork and chicken chops, bar snacks and 3-inch cakes. Late-night ramen runs 9:30pm–12:30am. 有的，先吃饭再听歌：800g 啦啦锅 RM50 起、脆皮手卷 RM12 起、意面、扒类、小吃和 3 寸蛋糕；深夜拉面 9:30pm–12:30am。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a happy hour at nana 研酒所?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, before 8:30pm: beer buckets (5 bottles) are buy 1 free 1, 10 glasses of Guinness are RM175, crispy hand-rolls start at RM6.80 and the pork chop, chargrilled chicken and chicken chop are RM16.80. 8:30pm 前：啤酒桶（5 瓶）买一送一，Guinness 10 杯 RM175，手卷 RM6.80 起，扒类 RM16.80。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I keep an unfinished bottle at nana 研酒所?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Spirits bottles are kept for 60 days and unfinished beer for 30 days. 洋酒可寄存 60 天，啤酒可寄存 30 天。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is nana 研酒所 halal?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. nana is a bar, and the menu includes pork and alcohol. 非清真：菜单有猪肉和酒精饮料。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does nana 研酒所 have non-alcoholic drinks?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Most of the signature cocktails come in an alcohol-free version, from RM25. 大部分招牌鸡尾酒都有无酒精版本，RM25 起。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I celebrate a birthday at nana 研酒所?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. In your birthday month the Flaming Lamborghini is RM68 instead of RM128, and 3-inch cakes are RM28–RM29. Nana Play members get a free birthday treat: a mini cake or a Flaming Lamborghini. WhatsApp +60 12-897 4221 ahead to hold a table. 生日月火焰兰博基尼只要 RM68（原价 RM128），3 寸蛋糕 RM28–29。Nana Play 会员另有免费生日礼：迷你蛋糕或火焰兰博基尼。建议先 WhatsApp 订位。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does nana 研酒所 have a membership or loyalty programme?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, Nana Play. Every RM100 on your bill earns a chip, and chips buy fries, cocktails, even a bottle of champagne, one reward a night. Join free at https://nana.pingan.today/ with a Malaysian phone number; nothing to download. 有，Nana Play。账单每 RM100 赚 1 个筹码，可换薯条、鸡尾酒，甚至整瓶香槟，每晚一份奖励。在 nana.pingan.today 免费加入，不用下载 App。"
+        }
+      }
+    ]
+  }
+  </script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17948641359"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','AW-17948641359');
+gtag('config','G-FC1VE9TZZE');
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href]');if(!a)return;var h=a.getAttribute('href')||'';if(h.indexOf('wa.me')>-1||h.indexOf('api.whatsapp.com')>-1){try{gtag('event','conversion',{send_to:'AW-17948641359/lMV3CL73_OgcEM-Qyu5C',transport_type:'beacon'});gtag('event','whatsapp_click',{link_url:h,transport_type:'beacon'});}catch(x){}}else if(h.indexOf('maps.app.goo.gl')>-1||h.indexOf('google.com/maps')>-1||h.indexOf('waze.com')>-1){try{gtag('event','directions_click',{link_url:h,transport_type:'beacon'});}catch(x){}}},true);
+</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="wrap">
+    <div class="top">
+    <nav class="nav" aria-label="Brand">
+      <a class="nav-brand" href="./" style="text-decoration:none"><span class="lock"><span class="lt" aria-hidden="true">nana</span><img class="wm" src="assets/img/wordmark-480.png" srcset="assets/img/wordmark-240.png 240w, assets/img/wordmark-480.png 480w" sizes="120px" width="1186" height="732" decoding="async" alt="nana 研酒所"></span></a>
+    </nav>
+
+    <header class="hero">
+      <div class="logo-orb">
+        <picture><source type="image/webp" srcset="assets/img/logo-300.webp 300w, assets/img/logo-600.webp 600w" sizes="(min-width:760px) 300px, 132px"><img src="assets/img/logo-600.jpg" srcset="assets/img/logo-300.jpg 300w, assets/img/logo-600.jpg 600w" sizes="(min-width:760px) 300px, 132px" width="1190" height="1173" fetchpriority="high" decoding="async" alt="nana 研酒所 logo — teal banana mark with stacked nana wordmark"></picture>
+      </div>
+      <p class="kicker">Japanese social live bar · Subang Jaya</p>
+      <h1><span class="h1-brand"><span class="lock lock-lg"><span class="lt" aria-hidden="true">nana</span><img class="wm" src="assets/img/wordmark-480.png" srcset="assets/img/wordmark-240.png 240w, assets/img/wordmark-480.png 480w" sizes="120px" width="1186" height="732" decoding="async" alt="nana 研酒所"></span></span>Your date night, sorted. <span class="soft">Live band every night.</span></h1>
+      <p class="zh-line">Live band 9pm–12:15am nightly · Japanese fusion bites · open 5pm–2am<br><span lang="zh">梳邦 SS13 · 约会、朋友小聚，每晚 9 点开唱。</span></p>
+      <ul class="proof-line"><li>★ 4.7 · 221 Google reviews</li><li><a href="https://waze.com/ul?q=nana%20SS13" target="_blank" rel="noopener">📍 SS13 Subang Jaya · Waze</a></li></ul>
+
+      <div class="cta-stack">
+        <a class="btn btn-primary" href="https://wa.me/60128974221?text=Hi%20nana%2C%20I%27d%20like%20to%20book.%20Date%3A%20%20Time%3A%20%20Pax%3A" target="_blank" rel="noopener">Book my table on WhatsApp / 订位</a>
+        <p class="hint">No deposit · table held 15 min · walk-ins welcome too</p>
+      </div>
+    </header>
+    </div>
+
+    <figure class="reel-wrap" style="margin:0">
+      <div class="reel"><video autoplay muted loop playsinline preload="metadata" poster="assets/video/nana-live-poster.jpg" width="960" height="540" aria-label="A live night at nana 研酒所, SS13 Subang Jaya">
+        <source src="assets/video/nana-live.webm" type="video/webm">
+        <source src="assets/video/nana-live.mp4" type="video/mp4">
+      </video></div>
+      <figcaption class="reel-cap">A night at nana · live from 9pm</figcaption>
+    </figure>
+
+    <main id="main">
+
+      <section class="block week" id="week" aria-labelledby="week-h">
+        <p class="block-label">This week</p>
+        <h2 id="week-h">Line-up, 26 Oct–1 Nov<em>本周阵容</em></h2>
+        <div class="days" id="days">
+          <div class="day" data-date="2026-10-26"><b>Mon 26 Oct</b><div class="poster"><picture><source type="image/webp" srcset="assets/lineup/mon-26oct-540.webp 540w, assets/lineup/mon-26oct-1024.webp 1024w" sizes="(min-width:760px) 240px, 78vw"><img src="assets/lineup/mon-26oct-1024.jpg" srcset="assets/lineup/mon-26oct-540.jpg 540w, assets/lineup/mon-26oct-1024.jpg 1024w" sizes="(min-width:760px) 240px, 78vw" width="1024" height="1280" loading="lazy" decoding="async" alt="nana 研酒所 live line-up poster, Mon 26 October"></picture></div></div>
+          <div class="day" data-date="2026-10-27"><b>Tue 27 Oct</b><div class="poster"><picture><source type="image/webp" srcset="assets/lineup/tue-27oct-540.webp 540w, assets/lineup/tue-27oct-1024.webp 1024w" sizes="(min-width:760px) 240px, 78vw"><img src="assets/lineup/tue-27oct-1024.jpg" srcset="assets/lineup/tue-27oct-540.jpg 540w, assets/lineup/tue-27oct-1024.jpg 1024w" sizes="(min-width:760px) 240px, 78vw" width="1024" height="1280" loading="lazy" decoding="async" alt="nana 研酒所 live line-up poster, Tue 27 October"></picture></div></div>
+          <div class="day" data-date="2026-10-28"><b>Wed 28 Oct</b><div class="poster"><picture><source type="image/webp" srcset="assets/lineup/wed-28oct-540.webp 540w, assets/lineup/wed-28oct-1024.webp 1024w" sizes="(min-width:760px) 240px, 78vw"><img src="assets/lineup/wed-28oct-1024.jpg" srcset="assets/lineup/wed-28oct-540.jpg 540w, assets/lineup/wed-28oct-1024.jpg 1024w" sizes="(min-width:760px) 240px, 78vw" width="1024" height="1280" loading="lazy" decoding="async" alt="nana 研酒所 live line-up poster, Wed 28 October"></picture></div></div>
+          <div class="day" data-date="2026-10-29"><b>Thu 29 Oct</b><div class="poster"><picture><source type="image/webp" srcset="assets/lineup/thu-29oct-540.webp 540w, assets/lineup/thu-29oct-1024.webp 1024w" sizes="(min-width:760px) 240px, 78vw"><img src="assets/lineup/thu-29oct-1024.jpg" srcset="assets/lineup/thu-29oct-540.jpg 540w, assets/lineup/thu-29oct-1024.jpg 1024w" sizes="(min-width:760px) 240px, 78vw" width="1024" height="1280" loading="lazy" decoding="async" alt="nana 研酒所 live line-up poster, Thu 29 October"></picture></div></div>
+          <div class="day" data-date="2026-10-30"><b>Fri 30 Oct</b><div class="poster"><picture><source type="image/webp" srcset="assets/lineup/fri-30oct-540.webp 540w, assets/lineup/fri-30oct-1024.webp 1024w" sizes="(min-width:760px) 240px, 78vw"><img src="assets/lineup/fri-30oct-1024.jpg" srcset="assets/lineup/fri-30oct-540.jpg 540w, assets/lineup/fri-30oct-1024.jpg 1024w" sizes="(min-width:760px) 240px, 78vw" width="1024" height="1280" loading="lazy" decoding="async" alt="nana 研酒所 live line-up poster, Fri 30 October"></picture></div></div>
+          <div class="day" data-date="2026-10-31"><b>Sat 31 Oct</b><div class="poster"><picture><source type="image/webp" srcset="assets/lineup/sat-31oct-540.webp 540w, assets/lineup/sat-31oct-1024.webp 1024w" sizes="(min-width:760px) 240px, 78vw"><img src="assets/lineup/sat-31oct-1024.jpg" srcset="assets/lineup/sat-31oct-540.jpg 540w, assets/lineup/sat-31oct-1024.jpg 1024w" sizes="(min-width:760px) 240px, 78vw" width="1024" height="1280" loading="lazy" decoding="async" alt="nana 研酒所 live line-up poster, Sat 31 October"></picture></div></div>
+          <div class="day" data-date="2026-11-01"><b>Sun 1 Nov</b><div class="poster"><picture><source type="image/webp" srcset="assets/lineup/sun-1nov-540.webp 540w, assets/lineup/sun-1nov-1024.webp 1024w" sizes="(min-width:760px) 240px, 78vw"><img src="assets/lineup/sun-1nov-1024.jpg" srcset="assets/lineup/sun-1nov-540.jpg 540w, assets/lineup/sun-1nov-1024.jpg 1024w" sizes="(min-width:760px) 240px, 78vw" width="1024" height="1280" loading="lazy" decoding="async" alt="nana 研酒所 live line-up poster, Sun 1 November"></picture></div></div>
+        </div>
+      </section>
+
+      <section class="block" id="menu" aria-labelledby="menu-h">
+        <p class="block-label">Menu</p>
+        <h2 id="menu-h">Food &amp; drinks<em>菜单</em></h2>
+        <div class="tabs" role="tablist" aria-label="Menu"><button class="tab" role="tab" aria-selected="true" aria-controls="tab-food">Food <span lang="zh">餐单</span></button><button class="tab" role="tab" aria-selected="false" aria-controls="tab-drinks">Drinks <span lang="zh">酒单</span></button></div>
+        <div class="pager-wrap" id="tab-food" role="tabpanel" aria-label="Food menu">
+          <div class="pager-head">
+            <p class="pager-label">Swipe · tap a page for full size</p>
+            <div class="pager-nav">
+              <p class="pager-count" data-count="food">1 / 12</p>
+              <button class="pager-btn" type="button" data-prev="food" aria-label="Previous food menu page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+              <button class="pager-btn" type="button" data-next="food" aria-label="Next food menu page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+            </div>
+          </div>
+          <div class="pager" data-pager="food" aria-label="Food menu pages" tabindex="0">
+            <a class="page" href="assets/menu/food-p1.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p1-480.webp 480w, assets/img/food-p1-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p1-960.jpg" srcset="assets/img/food-p1-480.jpg 480w, assets/img/food-p1-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 1 of 12"></picture></a>
+            <a class="page" href="assets/menu/food-p2.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p2-480.webp 480w, assets/img/food-p2-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p2-960.jpg" srcset="assets/img/food-p2-480.jpg 480w, assets/img/food-p2-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 2 of 12"></picture></a>
+            <a class="page" href="assets/menu/food-p3.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p3-480.webp 480w, assets/img/food-p3-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p3-960.jpg" srcset="assets/img/food-p3-480.jpg 480w, assets/img/food-p3-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 3 of 12"></picture></a>
+            <a class="page" href="assets/menu/food-p4.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p4-480.webp 480w, assets/img/food-p4-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p4-960.jpg" srcset="assets/img/food-p4-480.jpg 480w, assets/img/food-p4-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 4 of 12"></picture></a>
+            <a class="page" href="assets/menu/food-p5.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p5-480.webp 480w, assets/img/food-p5-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p5-960.jpg" srcset="assets/img/food-p5-480.jpg 480w, assets/img/food-p5-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 5 of 12"></picture></a>
+            <a class="page" href="assets/menu/food-p6.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p6-480.webp 480w, assets/img/food-p6-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p6-960.jpg" srcset="assets/img/food-p6-480.jpg 480w, assets/img/food-p6-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 6 of 12"></picture></a>
+            <a class="page" href="assets/menu/food-p7.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p7-480.webp 480w, assets/img/food-p7-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p7-960.jpg" srcset="assets/img/food-p7-480.jpg 480w, assets/img/food-p7-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 7 of 12"></picture></a>
+            <a class="page" href="assets/menu/food-p8.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p8-480.webp 480w, assets/img/food-p8-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p8-960.jpg" srcset="assets/img/food-p8-480.jpg 480w, assets/img/food-p8-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 8 of 12"></picture></a>
+            <a class="page" href="assets/menu/food-p9.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p9-480.webp 480w, assets/img/food-p9-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p9-960.jpg" srcset="assets/img/food-p9-480.jpg 480w, assets/img/food-p9-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 9 of 12"></picture></a>
+            <a class="page" href="assets/menu/food-p10.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p10-480.webp 480w, assets/img/food-p10-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p10-960.jpg" srcset="assets/img/food-p10-480.jpg 480w, assets/img/food-p10-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 10 of 12"></picture></a>
+            <a class="page" href="assets/menu/food-p11.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p11-480.webp 480w, assets/img/food-p11-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p11-960.jpg" srcset="assets/img/food-p11-480.jpg 480w, assets/img/food-p11-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 11 of 12"></picture></a>
+            <a class="page" href="assets/menu/food-p12.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p12-480.webp 480w, assets/img/food-p12-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p12-960.jpg" srcset="assets/img/food-p12-480.jpg 480w, assets/img/food-p12-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 12 of 12"></picture></a>
+          </div>
+        </div>
+        <div class="pager-wrap" id="tab-drinks" role="tabpanel" aria-label="Drinks menu" hidden>
+          <div class="pager-head">
+            <p class="pager-label">Swipe · tap a page for full size</p>
+            <div class="pager-nav">
+              <p class="pager-count" data-count="drinks">1 / 4</p>
+              <button class="pager-btn" type="button" data-prev="drinks" aria-label="Previous drinks menu page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+              <button class="pager-btn" type="button" data-next="drinks" aria-label="Next drinks menu page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+            </div>
+          </div>
+          <div class="pager" data-pager="drinks" aria-label="Drinks menu pages" tabindex="0">
+            <a class="page" href="assets/menu/drinks-p1.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/drinks-p1-480.webp 480w, assets/img/drinks-p1-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/drinks-p1-960.jpg" srcset="assets/img/drinks-p1-480.jpg 480w, assets/img/drinks-p1-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1415" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 drinks menu page 1 of 4"></picture></a>
+            <a class="page" href="assets/menu/drinks-p2.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/drinks-p2-480.webp 480w, assets/img/drinks-p2-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/drinks-p2-960.jpg" srcset="assets/img/drinks-p2-480.jpg 480w, assets/img/drinks-p2-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1415" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 drinks menu page 2 of 4"></picture></a>
+            <a class="page" href="assets/menu/drinks-p3.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/drinks-p3-480.webp 480w, assets/img/drinks-p3-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/drinks-p3-960.jpg" srcset="assets/img/drinks-p3-480.jpg 480w, assets/img/drinks-p3-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1415" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 drinks menu page 3 of 4"></picture></a>
+            <a class="page" href="assets/menu/drinks-p4.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/drinks-p4-480.webp 480w, assets/img/drinks-p4-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/drinks-p4-960.jpg" srcset="assets/img/drinks-p4-480.jpg 480w, assets/img/drinks-p4-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1415" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 drinks menu page 4 of 4"></picture></a>
+          </div>
+        </div>
+
+        <div class="menu-text sr-only" id="menu-text">
+          <h3>The menu, in text <span lang="zh">菜单文字版</span></h3>
+          <p>Prices in RM, before 10% service charge and SST. Copied from the September 2026 menu; if anything differs, the PDF is the latest.</p>
+
+          <details>
+            <summary>Fresh clams (lala), 800g pot <span lang="zh">啦啦锅</span></summary>
+            <ul>
+              <li><span>Curry + Parmesan <small>House signature: fresh clams in Maggi curry, finished with shredded parmesan</small></span><span class="p">55</span></li>
+              <li><span>Cream + Bacon <small>Creamy sauce with bacon</small></span><span class="p">55</span></li>
+              <li><span>Salted Egg <small>Rich salted egg sauce</small></span><span class="p">59</span></li>
+              <li><span>Pesto Sauce <small>Fragrant pesto sauce</small></span><span class="p">57</span></li>
+              <li><span>Black Pepper <small>Light black pepper clear soup</small></span><span class="p">50</span></li>
+              <li><span>Add-on: fried buns <small>6 golden fried buns for dipping into the sauce</small></span><span class="p">8</span></li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>Crispy hand-rolls <span lang="zh">脆皮手卷</span></summary>
+            <p class="sub">Crunchy seaweed, fresh toppings, made to order.</p>
+            <ul>
+              <li><span>Eel</span><span class="p">13<small>7.80 before 8:30pm</small></span></li>
+              <li><span>Salmon</span><span class="p">12<small>6.80 before 8:30pm</small></span></li>
+              <li><span>Prawn</span><span class="p">12<small>6.80 before 8:30pm</small></span></li>
+              <li><span>Abalone</span><span class="p">13<small>7.80 before 8:30pm</small></span></li>
+              <li><span>Negitoro</span><span class="p">18<small>10.80 before 8:30pm</small></span></li>
+              <li><span>Engawa</span><span class="p">15<small>8.80 before 8:30pm</small></span></li>
+              <li><span>Sweet prawn (raw)</span><span class="p">13<small>7.80 before 8:30pm</small></span></li>
+              <li><span>Chef’s pick trio <small>Chef picks 3</small></span><span class="p">40<small>25 before 8:30pm</small></span></li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>Hand-wrap rice <span lang="zh">海苔手包饭</span></summary>
+            <p class="sub">Seasoned Japanese rice with crispy seaweed sheets, wrapped your way.</p>
+            <ul>
+              <li><span>Engawa <small>Torched flounder fin</small></span><span class="p">35</span></li>
+              <li><span>Sweet shrimps (raw)</span><span class="p">30</span></li>
+              <li><span>Salmon</span><span class="p">28</span></li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>Snacks &amp; bites to share <span lang="zh">小吃</span></summary>
+            <ul>
+              <li><span>Truffle fries</span><span class="p">25</span></li>
+              <li><span>Fried pork strips</span><span class="p">22</span></li>
+              <li><span>Fried squid tentacles</span><span class="p">19</span></li>
+              <li><span>Arabiki sausage</span><span class="p">19</span></li>
+              <li><span>Fried baby shrimp</span><span class="p">18</span></li>
+              <li><span>Tebasaki wings</span><span class="p">18</span></li>
+              <li><span>Golden tofu bites</span><span class="p">16</span></li>
+              <li><span>Golden chicken popcorn</span><span class="p">15</span></li>
+              <li><span>Sweet potato fries</span><span class="p">15</span></li>
+              <li><span>Basic fries</span><span class="p">12</span></li>
+              <li><span>Edamame + salt</span><span class="p">10</span></li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>À la carte &amp; pasta <span lang="zh">主餐 · 意面</span></summary>
+            <ul>
+              <li><span>Herb-seared pork chop</span><span class="p">28<small>16.80 before 8:30pm</small></span></li>
+              <li><span>Chargrilled chicken</span><span class="p">28<small>16.80 before 8:30pm</small></span></li>
+              <li><span>Golden chicken chop</span><span class="p">28<small>16.80 before 8:30pm</small></span></li>
+              <li><span>Lean chicken plate <small>Grilled chicken breast, broccoli, cherry tomato, mashed potato, pumpkin-carrot purée; about 420 kcal</small></span><span class="p">25</span></li>
+              <li><span>Truffle + engawa + mushroom pasta</span><span class="p">42.80</span></li>
+              <li><span>Bacon mentaiko carbonara</span><span class="p">34.80</span></li>
+              <li><span>Grilled chicken pasta</span><span class="p">28.80</span></li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>Late-night ramen, 9:30pm–12:30am <span lang="zh">深夜拉面</span></summary>
+            <ul>
+              <li><span>Prawn &amp; egg ramen <small>Prawns, fried egg and spring onions in a comforting broth</small></span><span class="p">23.80</span></li>
+              <li><span>Bacon &amp; egg ramen <small>Crispy bacon, fried egg and spring onions in a rich broth</small></span><span class="p">18.80</span></li>
+              <li><span>Chicken &amp; egg ramen <small>Grilled chicken, fried egg and spring onions in a rich broth</small></span><span class="p">17.80</span></li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>3-inch cakes <span lang="zh">3 寸蛋糕</span></summary>
+            <ul>
+              <li><span>Hazelnut layered <small>Creamy hazelnut and milk chocolate</small></span><span class="p">29</span></li>
+              <li><span>Matcha <small>Japanese matcha with a crunchy base</small></span><span class="p">29</span></li>
+              <li><span>Tiramisu tart <small>Coffee ganache, dusted cocoa, crunchy tart shell</small></span><span class="p">28</span></li>
+              <li><span>Chocolate yuzu <small>Chocolate with Japanese yuzu and a crunchy base</small></span><span class="p">28</span></li>
+              <li><span>Pistachio raspberry <small>Creamy pistachio with raspberry gelée</small></span><span class="p">28</span></li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>Beer &amp; happy hour <span lang="zh">啤酒 · 欢乐时光</span></summary>
+            <p class="sub">Happy hour before 8:30pm: buckets (5 bottles) buy 1 free 1; Guinness 10 glasses for RM175. Can’t finish? We keep beer for 30 days.</p>
+            <ul>
+              <li><span>Tiger Crystal bucket (5 bottles) <small>3 buckets 318</small></span><span class="p">118</span></li>
+              <li><span>Tiger bucket (5 bottles) <small>3 buckets 338</small></span><span class="p">128</span></li>
+              <li><span>Heineken bucket (5 bottles) <small>3 buckets 368</small></span><span class="p">138</span></li>
+              <li><span>Guinness, per glass <small>10 glasses 235</small></span><span class="p">32</span></li>
+              <li><span>Tiger carton, 24 × 330ml</span><span class="p">478</span></li>
+              <li><span>Heineken carton, 24 × 330ml</span><span class="p">558</span></li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>Cocktails <span lang="zh">鸡尾酒</span></summary>
+            <p class="sub">Top 3: 好运咸鱼, 握草 and 躺苹. Price in brackets is the alcohol-free version.</p>
+            <ul lang="zh">
+              <li><span>鲨B</span><span class="p">65<small>(55)</small></span></li>
+              <li><span>好运咸鱼</span><span class="p">45</span></li>
+              <li><span>握草</span><span class="p">45<small>(35)</small></span></li>
+              <li><span>躺苹</span><span class="p">45<small>(35)</small></span></li>
+              <li><span>夏风</span><span class="p">45</span></li>
+              <li><span>伯牙绝弦</span><span class="p">35<small>(25)</small></span></li>
+              <li><span>抹香荔影</span><span class="p">35</span></li>
+              <li><span>酸沙梨</span><span class="p">35<small>(25)</small></span></li>
+              <li><span>舔狗</span><span class="p">35<small>(25)</small></span></li>
+              <li><span>柠檬冰茶</span><span class="p">35<small>(25)</small></span></li>
+              <li><span>遇见</span><span class="p">35<small>(25)</small></span></li>
+              <li><span>月下</span><span class="p">35<small>(25)</small></span></li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>Shots &amp; umeshu <span lang="zh">一口杯 · 梅酒</span></summary>
+            <ul>
+              <li><span>Flaming Lamborghini <span lang="zh">火焰兰博基尼</span> <small>RM68 in your birthday month</small></span><span class="p">128</span></li>
+              <li><span>Fresh lime Bacardi <span lang="zh">香柠百加得</span>, 6 shots</span><span class="p">98</span></li>
+              <li><span>Jägerbomb <span lang="zh">野格炸弹</span> <small>10 for 188</small></span><span class="p">35</span></li>
+              <li><span>Choya Yuzu umeshu <span lang="zh">柚子梅酒</span> <small>Best seller · 3 bottles 748</small></span><span class="p">278</span></li>
+              <li><span>Choya Uji-cha umeshu <span lang="zh">宇治茶梅酒</span> <small>3 bottles 598</small></span><span class="p">228</span></li>
+              <li><span>Choya Honey umeshu <span lang="zh">蜂蜜梅酒</span> <small>No added sugar · 3 bottles 598</small></span><span class="p">228</span></li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>Bottles &amp; wine <span lang="zh">洋酒 · 红酒</span></summary>
+            <p class="sub">Price per bottle, then for 2. Spirits can be kept for 60 days.</p>
+            <ul>
+              <li><span>Kweichow Moutai <span lang="zh">贵州茅台</span> <small>2 for 6,300</small></span><span class="p">3,588</span></li>
+              <li><span>Clase Azul Reposado <small>2 for 4,800</small></span><span class="p">2,688</span></li>
+              <li><span>Dom Pérignon <small>2 for 3,400</small></span><span class="p">1,888</span></li>
+              <li><span>Hennessy XO <small>2 for 3,000</small></span><span class="p">1,688</span></li>
+              <li><span>Martell Cordon Bleu <small>2 for 2,700</small></span><span class="p">1,488</span></li>
+              <li><span>Johnnie Walker XR 21 <small>2 for 1,950</small></span><span class="p">1,088</span></li>
+              <li><span>The Macallan 12 <small>2 for 1,588</small></span><span class="p">888</span></li>
+              <li><span>Hennessy VSOP <small>2 for 1,150</small></span><span class="p">638</span></li>
+              <li><span>Johnnie Walker Gold Label Reserve <small>2 for 1,150</small></span><span class="p">638</span></li>
+              <li><span>The Singleton 12 <small>2 for 1,000</small></span><span class="p">588</span></li>
+              <li><span>Moët &amp; Chandon Impérial <small>2 for 1,000 · 6 for 2,800</small></span><span class="p">568</span></li>
+              <li><span>Roku gin <small>2 for 770</small></span><span class="p">428</span></li>
+              <li><span>Sottano Reserva Malbec <small>Argentina</small></span><span class="p">338</span></li>
+              <li><span>Cremaschi Furlotti Gran Reserva Carmenère <small>Chile</small></span><span class="p">268</span></li>
+              <li><span>Hardys VR Cabernet Sauvignon <small>Australia</small></span><span class="p">208</span></li>
+            </ul>
+          </details>
+        </div>
+      </section>
+
+      <section class="block proof" id="proof" aria-labelledby="proof-h">
+        <p class="block-label">Guests say</p>
+        <h2 id="proof-h">Rated on Google<em>谷歌评价</em></h2>
+        <div class="rating"><strong>4.7</strong><span class="stars" aria-hidden="true">★</span><small>from 221 Google reviews · as of 23 Sep 2026</small></div>
+        <ul class="quotes">
+          <li><q>The staff were friendly, the service was attentive, and the atmosphere was very comfortable and relaxing.</q><cite>luxx studio · Google review</cite></li>
+          <li><q>Amazing selection and the friendliest staff around!</q><cite>harbock s. · Google review</cite></li>
+          <li><q>Very cheap food and alcohol before 8.30pm. Amazing service from the staff as well ❤️</q><cite>Jayden P. · Google review</cite></li>
+        </ul>
+        <p class="week-note"><a href="https://maps.app.goo.gl/CddBMPbaehJuaard7" target="_blank" rel="noopener">Read all reviews on Google Maps</a></p>
+      </section>
+
+      <section class="block" id="visit" aria-labelledby="visit-h">
+        <p class="block-label">Visit</p>
+        <h2 id="visit-h">Plan your visit<em>来之前先看</em></h2>
+        <ul class="rule">
+          <li><span class="k">Hours</span><span class="v">5pm–2am daily · kitchen from 5pm · late-night ramen 9:30pm–12:30am</span></li>
+          <li><span class="k">Address</span><span class="v">2 Jalan SS 13/3A, Subang Jaya Industrial Estate<br>SS13, 47500 Subang Jaya, Selangor<br><a class="lk" href="https://maps.app.goo.gl/CddBMPbaehJuaard7" target="_blank" rel="noopener">Google Maps</a> · <a class="lk" href="https://waze.com/ul?q=nana%20SS13" target="_blank" rel="noopener">Waze “nana SS13”</a> · Grab “nana SS13”</span></li>
+          <li><span class="k">Happy hour</span><span class="v">Before 8:30pm · <span lang="zh">8:30pm 前</span><br>Buckets buy 1 free 1 · Guinness 10 glasses RM175 · hand-rolls from RM6.80 · chops RM16.80</span></li>
+          <li><span class="k">Age &amp; smoking</span><span class="v">Under-18 guests must leave by 8:30pm; strictly 18+ after · no cigarettes, vapes OK<br><span lang="zh">未满 18 岁须在 8:30pm 前离开，之后严格 18+。不可抽烟，电子烟 / vape 可以。</span></span></li>
+          <li><span class="k">Booking</span><span class="v">Walk-ins welcome daily; WhatsApp ahead on Fri/Sat/PH eves · no deposit, table held 15 minutes</span></li>
+          <li><span class="k">Stage sofa</span><span class="v">RM300 minimum · Fri/Sat/PH eves only<br>Weekdays &amp; the PH day itself: no sofa minimum</span></li>
+          <li><span class="k">Payment</span><span class="v">All payment types &amp; split bills OK · prices exclude service charge &amp; SST · no private room</span></li>
+          <li><span class="k">Bottle keeping</span><span class="v">Spirits 60 days · beer 30 days</span></li>
+          <li><span class="k">Seats</span><span class="v">About 350</span></li>
+          <li><span class="k">Nana Play</span><span class="v">Every RM100 on your bill earns a chip for fries, cocktails, even champagne; members get a birthday treat. <a class="lk" href="https://nana.pingan.today/">Join free</a><br><span lang="zh">账单每 RM100 赚 1 个筹码，免费加入，不用下载 App。</span></span></li>
+          <li><span class="k">Good to know</span><span class="v">Non-halal: the menu includes pork and alcohol</span></li>
+          <li><span class="k">Contact</span><span class="v"><a class="lk" href="tel:+60128974221">+60 12-897 4221</a> (call / WhatsApp) · <a class="lk" href="https://instagram.com/nana.ss13" target="_blank" rel="noopener">@nana.ss13</a></span></li>
+        </ul>
+      </section>
+
+      <section class="final" id="book" aria-labelledby="book-h">
+        <h2 id="book-h">Book your table <span lang="zh" style="font-weight:500;color:var(--ink-3);font-size:.6em">订位</span></h2>
+        <a class="btn btn-primary" href="https://wa.me/60128974221?text=Hi%20nana%2C%20I%27d%20like%20to%20book.%20Date%3A%20%20Time%3A%20%20Pax%3A" target="_blank" rel="noopener">Book my table on WhatsApp / 订位</a>
+        <p class="hint">Include date, time &amp; pax. Confirmations come in English; chat in English or <span lang="zh">中文</span>.</p>
+      </section>
+    </main>
+
+    <footer>nana 研酒所 · SS13, Subang Jaya</footer>
+  </div>
+  <div class="sticky">
+    <a class="btn btn-primary" href="https://wa.me/60128974221?text=Hi%20nana%2C%20I%27d%20like%20to%20book.%20Date%3A%20%20Time%3A%20%20Pax%3A" target="_blank" rel="noopener">Book my table on WhatsApp / 订位</a>
+  </div>
+  <script>
+    document.querySelectorAll("[data-pager]").forEach(function (pager) {
+      var name = pager.getAttribute("data-pager");
+      var count = document.querySelector('[data-count="' + name + '"]');
+      var prev = document.querySelector('[data-prev="' + name + '"]');
+      var next = document.querySelector('[data-next="' + name + '"]');
+      var pages = pager.querySelectorAll(".page");
+      if (!count || !pages.length) return;
+      var step = function () {
+        var gap = parseFloat(getComputedStyle(pager).columnGap) || 10;
+        return pages[0].offsetWidth + gap;
+      };
+      var maxScroll = function () {
+        return pager.scrollWidth - pager.clientWidth;
+      };
+      var update = function () {
+        var i = Math.min(pages.length, Math.max(1, Math.round(pager.scrollLeft / step()) + 1));
+        count.textContent = i + " / " + pages.length;
+        if (prev) prev.disabled = pager.scrollLeft <= 1;
+        if (next) next.disabled = pager.scrollLeft >= maxScroll() - 1;
+      };
+      var go = function (dir) {
+        pager.scrollBy({ left: dir * step(), behavior: "smooth" });
+      };
+      if (prev) prev.addEventListener("click", function () { go(-1); });
+      if (next) next.addEventListener("click", function () { go(1); });
+      pager.addEventListener("scroll", update, { passive: true });
+      window.addEventListener("resize", update);
+      pager.addEventListener("keydown", function (e) {
+        if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+        e.preventDefault();
+        go(e.key === "ArrowRight" ? 1 : -1);
+      });
+      // Map vertical wheel/trackpad to horizontal paging while over the pager.
+      // Deltas are accumulated and advance one snapped page at a time, because
+      // scroll-snap: mandatory re-snaps tiny scrollLeft nudges straight back.
+      var wheelAcc = 0, wheelLockUntil = 0;
+      pager.addEventListener("wheel", function (e) {
+        if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+        var delta = e.deltaY;
+        if (e.deltaMode === 1) delta *= 32;
+        else if (e.deltaMode === 2) delta *= pager.clientWidth;
+        var canScroll = delta < 0 ? pager.scrollLeft > 0 : pager.scrollLeft < maxScroll() - 1;
+        if (!canScroll) { wheelAcc = 0; return; }
+        e.preventDefault();
+        var now = Date.now();
+        if (now < wheelLockUntil) return;
+        wheelAcc += delta;
+        if (Math.abs(wheelAcc) >= 60) {
+          go(wheelAcc > 0 ? 1 : -1);
+          wheelAcc = 0;
+          wheelLockUntil = now + 350;
+        }
+      }, { passive: false });
+      update();
+    });
+  </script>
+  <script>
+  (function(){if(!("IntersectionObserver" in window)||matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  document.documentElement.classList.add("js");var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}})},{rootMargin:"0px 0px -8% 0px"});
+  document.querySelectorAll("main .block, .ribbon, .pulse, .policy-band").forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight){return;}el.classList.add("rv");io.observe(el);});})();
+  </script>
+  <script>
+  (function(){var tabs=document.querySelectorAll('.tab');tabs.forEach(function(t){t.addEventListener('click',function(){tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',on);document.getElementById(x.getAttribute('aria-controls')).hidden=!on;});var p=document.querySelector('#'+t.getAttribute('aria-controls')+' .pager');if(p){p.scrollLeft=0;p.dispatchEvent(new Event('scroll'));}});});})();
+  </script>
+  <script>
+  (function(){var d=new Date(Date.now()+8*36e5).toISOString().slice(0,10),el=document.querySelector('.day[data-date="'+d+'"]');if(!el)return;el.classList.add("today");var c=document.getElementById("days");c.scrollLeft=el.offsetLeft-c.offsetLeft;})();
+  </script>
+<script>(function(){var d=document.querySelectorAll('#days .day[data-date]');if(!d.length)return;var last=d[d.length-1].getAttribute('data-date');var t=new Date(Date.now()+8*3600e3).toISOString().slice(0,10);if(last<t){var s=document.getElementById('week');s.classList.add('week-stale');var h=document.getElementById('week-h');h.innerHTML='Live band every night<em>每晚现场乐队</em>';var n=s.querySelector('.week-note')||document.createElement('p');n.className='week-note';n.innerHTML='Tonight\u2019s singer is posted daily on <a href="https://instagram.com/nana.ss13" target="_blank" rel="noopener">@nana.ss13</a>.';if(!n.parentNode)h.after(n);}else{d.forEach(function(x){if(x.getAttribute('data-date')===t){x.querySelector('b').textContent='Tonight \u00b7 '+x.querySelector('b').textContent;}});}})();</script>
+</body>
+</html>

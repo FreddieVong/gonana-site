@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://gonana.my/sitemap.xml

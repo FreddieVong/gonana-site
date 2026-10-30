@@ -29,170 +29,219 @@
   <link rel="preload" href="assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <style>
+/* nana 研酒所 · "printed menu": one dark band-video hero, then white paper with forest ink and teal,
+   set in Anton capitals like the printed menu and posters. */
 @font-face{font-family:"Instrument Sans";font-style:normal;font-weight:400 700;font-display:swap;src:url(assets/fonts/instrument-sans-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-picture{display:contents}
-.week{padding-top:40px}
-.week-note{color:var(--ink-3);font-size:13.5px;margin-top:6px}
-.poster{display:block;margin-top:16px;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--line);max-width:30rem;background:var(--mist)}
-.poster img{display:block;width:100%;height:auto}
-.days{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;margin-top:16px;scrollbar-width:none}
-.days::-webkit-scrollbar{display:none}
-.day{flex:0 0 78%;max-width:22rem;scroll-snap-align:start;text-decoration:none;color:inherit}
-.day .poster{margin-top:8px}
-.day b{font-size:13px;font-weight:700;color:var(--ink-3)}
-.day.today b{color:var(--accent-text)}
-.proof{padding-top:48px}
-.rating{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:6px}
-.rating strong{font-size:2.4rem;font-weight:700;letter-spacing:-.03em;line-height:1}
-.rating .stars{color:var(--accent-text);font-size:1.1rem;letter-spacing:.05em}
-.rating small{color:var(--ink-3);font-size:13px}
-.quotes{display:grid;gap:10px;margin-top:18px;list-style:none;padding:0}
-.quotes li{border:1px solid var(--line);border-radius:var(--r-md);padding:16px;border-left:3px solid var(--rule)}
-.quotes q{display:block;font-size:15.5px;line-height:1.5;color:var(--ink);quotes:"“" "”"}
-.quotes cite{display:block;margin-top:8px;font-style:normal;font-size:12.5px;font-weight:600;color:var(--ink-3)}
-@media(min-width:760px){.quotes{grid-template-columns:repeat(3,1fr)}.days .day{flex-basis:15rem}main #week,main #proof{grid-column:1/-1}}
-.js .rv{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
-.js .rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}}
-
-:root{--paper:#fff;--mist:#f6f8f7;--mist-deep:#eef2f0;--line:#e7ece9;--line-strong:#d6deda;
---ink:#172923;--ink-2:#56675f;--ink-3:#64756f;--r-xs:6px;--r-sm:10px;--r-md:14px;--r-lg:18px;--gutter:1.25rem;--max:1040px;--hero:#fff;--on-hero:#172923;--on-hero-line:#d6deda;--on-hero-hover:#f6f8f7;--rule:#3FB4A7;--btn:#3FB4A7;--btn-deep:#36A094;--on-btn:#0B2B27;--on-accent-btn:#0B2B27;--accent:#1C7A70;--accent-text:#1C736F;--accent-soft:#E4F2F0;--accent-btn:#3FB4A7;--logo-bg:#fff;}
+@font-face{font-family:Anton;font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/anton-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+:root{
+  --night:#0B2B27; --forest:#12463B; --ink-2:#4E6560; --teal:#3FB4A7; --teal-text:#1C736F;
+  --paper:#FFFFFF; --mist:#F2F6F4; --line:#E3EAE7; --line-strong:#CFD9D5;
+  --display:Anton,"Arial Narrow",Impact,sans-serif;
+  --body:"Instrument Sans","Noto Sans SC",system-ui,sans-serif;
+  --gutter:20px; --max:1200px; --r:14px;
+}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font-family:"Instrument Sans","Noto Sans SC",system-ui,sans-serif;font-size:15.5px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body{background:var(--paper);color:var(--forest);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
 [lang="zh"]{font-family:"Noto Sans SC","Instrument Sans",sans-serif}
 a{color:inherit}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
-.skip{position:absolute;left:16px;top:-60px;z-index:40;background:var(--ink);color:#fff;font-weight:600;font-size:.85rem;padding:12px 18px;border-radius:var(--r-sm);text-decoration:none}
+img{display:block;max-width:100%}
+picture{display:contents}
+:focus-visible{outline:2px solid var(--teal-text);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:16px;top:-60px;z-index:40;background:var(--forest);color:#fff;font-weight:600;padding:12px 18px;border-radius:10px;text-decoration:none}
 .skip:focus{top:14px}
-.wrap{width:min(var(--max),100%);margin:0 auto;padding:0 var(--gutter) 110px}
-.top{background:var(--hero);color:var(--on-hero);margin:0 calc(50% - 50vw);padding:0 max(var(--gutter),calc(50vw - var(--max)/2 + var(--gutter)))}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:max(1.1rem,env(safe-area-inset-top)) 0 .5rem}
-.nav-brand{font-weight:700;font-size:.95rem;letter-spacing:-.01em;text-decoration:none}
-.nav-brand span,.nav-brand b{font-weight:500;opacity:.8}
-.nav-chip,.nav-live{font-size:12.5px;font-weight:600;padding:5px 10px;border-radius:var(--r-xs);border:1px solid var(--on-hero-line);white-space:nowrap}
-.hero{display:grid;gap:0;padding:28px 0 40px;animation:up .5s ease both}
-.logo-orb,.logo-stage{width:132px;aspect-ratio:1;border-radius:var(--r-lg);overflow:hidden;background:var(--logo-bg);margin-bottom:26px;box-shadow:0 1px 0 rgba(0,0,0,.04)}
-.logo-orb img,.logo-stage img{display:block;width:100%;height:100%;object-fit:contain}
-.kicker,.place{font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--accent-text);margin-bottom:10px}
-h1{font-weight:700;font-size:clamp(2.3rem,10vw,3.6rem);line-height:1.02;letter-spacing:-.035em;max-width:14ch;margin-bottom:14px}
-h1 .soft{color:var(--accent-text)}
-h1::after{content:"";display:block;width:48px;height:3px;border-radius:2px;background:var(--rule);margin-top:18px}
-.top{border-bottom:1px solid var(--line)}
-.logo-orb,.logo-stage{border:1px solid var(--line)}
-.btn-primary{font-weight:700}
-.h1-brand{display:block;font-size:.95rem;font-weight:600;letter-spacing:0;margin-bottom:12px;opacity:.85}
-.zh-line{font-size:1.02rem;font-weight:500;opacity:.85;margin-bottom:26px}
-.cta-stack{display:grid;gap:10px;max-width:26rem}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;font-weight:600;font-size:15.5px;text-decoration:none;border-radius:var(--r-sm);transition:background-color .15s,color .15s,border-color .15s,transform .1s}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.wrap{width:min(var(--max),100%);margin:0 auto;padding-left:max(var(--gutter),env(safe-area-inset-left));padding-right:max(var(--gutter),env(safe-area-inset-right))}
+.disp{font-family:var(--display);font-weight:400;text-transform:uppercase;letter-spacing:.005em;line-height:.92}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.45em;min-height:54px;padding:0 26px;border-radius:999px;background:var(--teal);color:var(--night);font-weight:700;font-size:16px;text-decoration:none;transition:background-color .15s,transform .1s}
+.btn:hover{background:#36A094}
 .btn:active{transform:scale(.985)}
-.btn-primary{background:var(--btn);color:var(--on-btn);min-height:52px}
-.btn-primary:hover{background:var(--btn-deep)}
-.btn-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.btn-ghost{background:transparent;border:1px solid var(--on-hero-line);color:inherit;font-size:14.5px}
-.btn-ghost:hover{background:var(--on-hero-hover)}
-.hint{margin-top:12px;font-size:12.5px;opacity:.8;max-width:26rem}
-main .btn-ghost,.play-btn{border-color:var(--line-strong);color:var(--ink)}
-main .btn-ghost:hover{background:var(--mist)}
-.ribbon,.pulse{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;margin:24px 0 0;font-size:12.5px;color:var(--ink-3)}
-.ribbon span,.pulse span{background:var(--paper);padding:14px 12px;display:flex;flex-direction:column;gap:2px}
-.ribbon b,.pulse b{color:var(--ink);font-weight:700;font-size:15px;letter-spacing:-.01em}
-.policy-band{margin:16px 0 0;padding:14px 16px;border-radius:var(--r-md);background:var(--accent-soft);font-size:14px;color:var(--ink-2)}
-.policy-band strong{color:var(--ink);font-weight:600}
-.policy-band [lang="zh"]{display:block;margin-top:4px;font-size:13.5px}
-.block{padding:48px 0 0}
-.block-label{font-size:12px;font-weight:600;color:var(--accent-text);margin-bottom:6px}
-.block h2{font-size:clamp(1.6rem,6vw,2.1rem);font-weight:700;letter-spacing:-.03em;line-height:1.1;margin-bottom:8px}
-.block h2 em{font-style:normal;color:var(--ink-3);font-weight:500;font-size:.95rem;margin-left:10px;letter-spacing:0;font-family:"Noto Sans SC",sans-serif}
-.facts-list{list-style:none;padding:8px 0 0;font-size:15px}
-.facts-list li{padding:11px 0;border-bottom:1px solid var(--line);color:var(--ink-2)}
-.facts-list li:last-child{border-bottom:0}
-.facts-list a,.rule a,.faq a,.play-body a{color:var(--accent-text);font-weight:600;text-underline-offset:3px}
-.rule{list-style:none;padding:8px 0 0}
-.rule li{display:grid;grid-template-columns:7.5rem 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
-.rule li:last-child{border-bottom:0}
-.rule .k{color:var(--ink-3);font-size:13.5px;font-weight:500}
-.rule .v{font-weight:600;font-size:15px;line-height:1.45}
-.play-body{color:var(--ink-2);padding-top:6px}
-.play-body [lang="zh"]{display:block;margin-top:6px}
-.play-btn{width:100%;margin-top:16px;max-width:26rem}
-.contact-list{padding-top:8px}
-.contact-list a{display:flex;justify-content:space-between;align-items:center;min-height:52px;border-bottom:1px solid var(--line);text-decoration:none;font-weight:600}
-.contact-list a:last-child{border-bottom:0}
-.contact-list a span{color:var(--accent-text);font-size:13.5px}
-.faq details,.menu-text details{border-bottom:1px solid var(--line)}
-.faq summary,.menu-text summary{list-style:none;cursor:pointer;font-weight:600;font-size:15.5px;line-height:1.4;min-height:52px;padding:14px 2px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
-.faq summary::-webkit-details-marker,.menu-text summary::-webkit-details-marker{display:none}
-.faq summary .q{flex:1}
-.faq summary::after,.menu-text summary::after{content:"";flex:0 0 auto;width:8px;height:8px;margin:.45em 4px 0 auto;border-right:2px solid var(--ink-3);border-bottom:2px solid var(--ink-3);transform:rotate(45deg);transition:transform .2s}
-.faq details[open] summary::after,.menu-text details[open] summary::after{transform:rotate(225deg)}
-.faq summary [lang="zh"],.menu-text summary [lang="zh"]{font-weight:500;color:var(--ink-3)}
-.faq p{color:var(--ink-2);font-size:15px;padding:0 2px 16px;animation:fade .2s ease both}
-.faq p [lang="zh"]{display:block;margin-top:8px}
-@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-@keyframes fade{from{opacity:0}to{opacity:1}}
-footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-3)}
-.sticky{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px var(--gutter) calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.94);border-top:1px solid var(--line);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.sticky .btn{width:100%;display:flex;background:var(--accent-btn);color:var(--on-accent-btn)}
-.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
-.menu-tile{display:block;text-decoration:none;color:inherit;overflow:hidden;border-radius:var(--r-md);border:1px solid var(--line);background:var(--paper);transition:border-color .15s,transform .1s}
-.menu-tile:hover{border-color:var(--line-strong)}
-.menu-tile:active{transform:scale(.985)}
-.menu-tile .thumb{display:block;width:100%;height:auto;background:var(--mist)}
-.menu-tile .meta{padding:12px 14px;border-top:1px solid var(--line);display:flex;align-items:baseline;justify-content:space-between;gap:8px}
-.menu-tile .meta strong{font-weight:600;font-size:15px}
-.menu-tile .meta strong [lang="zh"]{color:var(--ink-3);font-weight:500;font-size:12.5px;margin-left:6px}
-.menu-tile .meta .open{font-size:12.5px;font-weight:600;color:var(--accent-text);white-space:nowrap}
-.pager-wrap{margin-top:24px}
+.btn [lang="zh"]{font-weight:500}
+.btn-line{background:transparent;border:1.5px solid var(--forest);color:var(--forest)}
+.btn-line:hover{background:var(--mist)}
+
+/* hero: the one dark object */
+.cx-hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:110px max(var(--gutter),env(safe-area-inset-right)) 34px max(var(--gutter),env(safe-area-inset-left));color:#fff;background:var(--night);isolation:isolate;overflow:hidden}
+.cx-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;z-index:-2}
+video.cx-bg{opacity:0;transition:opacity .8s}
+video.cx-bg.on{opacity:1}
+.cx-hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.55) 0,rgba(0,0,0,0) 22%,rgba(0,0,0,.1) 40%,rgba(11,43,39,.92) 72%,var(--night) 100%)}
+.nav{position:absolute;top:max(18px,env(safe-area-inset-top));left:max(var(--gutter),env(safe-area-inset-left));right:max(var(--gutter),env(safe-area-inset-right));display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand .logo{width:44px;height:44px;border-radius:50%;background:#fff;padding:3px;object-fit:contain}
+.brand .wm{height:30px;width:auto;filter:brightness(0) invert(1)}
+.pill{background:#fff;color:var(--night);font-weight:600;font-size:14px;padding:10px 18px;border-radius:999px;text-decoration:none;white-space:nowrap}
+.tonight{display:inline-flex;align-items:center;gap:9px;font-size:15px;font-weight:600;margin-bottom:12px}
+.tonight::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px rgba(63,180,167,.3)}
+.names{font-size:clamp(60px,18vw,150px);color:#fff;text-wrap:balance}
+.names span{display:block}
+.when{margin-top:14px;font-size:17px;color:#E6EEEB}
+.when [lang="zh"]{display:block;font-size:14px;opacity:.85;margin-top:2px}
+.cta-row .btn{margin-top:22px;width:100%}
+.proof-line{margin-top:14px;font-size:14px;color:#D3DFDB}
+.proof-line b{color:#fff}
+
+/* sections */
+.sec{padding-top:64px}
+.sec-h{font-size:clamp(42px,11vw,72px);text-wrap:balance}
+.sec-h [lang="zh"]{font-family:"Noto Sans SC",sans-serif;font-size:.3em;font-weight:500;color:var(--ink-2);margin-left:.4em;vertical-align:.5em}
+.sec-sub{color:var(--ink-2);margin-top:10px;font-size:15.5px;max-width:36rem}
+.sec-sub a{color:var(--teal-text);font-weight:600;text-underline-offset:3px}
+
+/* this week: a gig board */
+.nights{list-style:none;padding:0;margin-top:22px;border-top:1.5px solid var(--forest)}
+.nights a{display:grid;grid-template-columns:62px minmax(0,1fr) 46px;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--line);text-decoration:none}
+.nights .d{font-size:13px;font-weight:600;color:var(--ink-2);line-height:1.15}
+.nights .d b{display:block;font-family:var(--display);font-weight:400;font-size:28px;color:var(--forest);line-height:1}
+.nights .d i{font-style:normal;display:block;font-weight:700;font-size:12px;margin-top:4px}
+.nights .who{font-family:var(--display);text-transform:uppercase;font-size:22px;line-height:1.05}
+.nights picture{display:block;width:46px}
+.nights .thumb{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:6px;background:var(--mist)}
+.nights .now a{background:var(--teal);margin:0 calc(var(--gutter) * -1);padding:14px var(--gutter);border-bottom:0}
+.nights .now .d,.nights .now .d b,.nights .now .who{color:var(--night)}
+.nights .past{display:none}
+.feature{display:none}
+.week-off .nights{display:none}
+
+/* dinner first, music later */
+.lockup{font-size:clamp(52px,15vw,120px)}
+.lockup span{display:block}
+.lockup span+span{color:var(--teal)}
+.dishes{display:grid;gap:18px;margin-top:24px}
+.dish{margin:0}
+.dish .ph{aspect-ratio:16/10;border-radius:var(--r);background-color:#fff;background-repeat:no-repeat;border:1px solid var(--line)}
+.dish figcaption{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-top:10px}
+.dish b{font-size:17px;font-weight:700}
+.dish b [lang="zh"]{font-weight:500;color:var(--ink-2);font-size:14px;margin-left:6px}
+.dish small{display:block;color:var(--teal-text);font-size:13px;font-weight:600}
+.dish i{font-style:normal;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.clams{background-image:url(assets/img/food-p2-960.jpg);background-image:image-set(url(assets/img/food-p2-960.webp) type("image/webp"),url(assets/img/food-p2-960.jpg) type("image/jpeg"));background-size:150%;background-position:50% 64%}
+.roll{background-image:url(assets/img/food-p4-960.jpg);background-image:image-set(url(assets/img/food-p4-960.webp) type("image/webp"),url(assets/img/food-p4-960.jpg) type("image/jpeg"));background-size:330%;background-position:51% 37%}
+.pasta{background-image:url(assets/img/food-p9-960.jpg);background-image:image-set(url(assets/img/food-p9-960.webp) type("image/webp"),url(assets/img/food-p9-960.jpg) type("image/jpeg"));background-size:125%;background-position:50% 36%}
+.full-menu{margin-top:40px}
+.full-menu h3{font-size:1.15rem;font-weight:700}
+.tabs{display:inline-flex;margin-top:14px;border:1.5px solid var(--forest);border-radius:999px;overflow:hidden}
+.tab{appearance:none;border:0;background:var(--paper);color:var(--forest);font:inherit;font-weight:600;font-size:14.5px;min-height:44px;padding:0 22px;cursor:pointer}
+.tab+.tab{border-left:1.5px solid var(--forest)}
+.tab[aria-selected="true"]{background:var(--forest);color:#fff}
+.pager-wrap{margin-top:18px}
+.pager-wrap[hidden]{display:none}
 .pager-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
 .pager-nav{display:flex;align-items:center;gap:8px}
-.pager-btn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;padding:0;border-radius:var(--r-sm);border:1px solid var(--line-strong);background:var(--paper);color:var(--ink);cursor:pointer}
+.pager-label,.pager-count{font-size:13px;font-weight:600;color:var(--ink-2)}
+.pager-count{color:var(--forest);white-space:nowrap;font-variant-numeric:tabular-nums}
+.pager-btn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;padding:0;border-radius:50%;border:1.5px solid var(--line-strong);background:var(--paper);color:var(--forest);cursor:pointer}
 .pager-btn svg{width:16px;height:16px}
 .pager-btn:hover:not(:disabled){background:var(--mist)}
 .pager-btn:disabled{opacity:.35;cursor:default}
-.pager-label{font-size:12.5px;font-weight:600;color:var(--ink-3)}
-.pager-count{font-size:12.5px;font-weight:600;color:var(--ink);white-space:nowrap}
 .pager{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .pager::-webkit-scrollbar{display:none}
-.pager .page{flex:0 0 88%;scroll-snap-align:center;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--line);background:var(--mist)}
+.pager .page{flex:0 0 88%;scroll-snap-align:center;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:var(--mist)}
 .pager .page img{display:block;width:100%;height:auto}
-.menu-note{margin-top:10px;font-size:12.5px;color:var(--ink-3)}
-.menu-text{margin-top:32px}
-.menu-text h3{font-size:1.15rem;font-weight:700;letter-spacing:-.02em;margin-bottom:4px}
-.menu-text>p{color:var(--ink-3);font-size:13.5px;margin-bottom:8px}
-.menu-text .sub{color:var(--ink-3);font-size:13.5px;padding:0 2px 6px}
-.menu-text ul{list-style:none;padding:0 2px 14px}
-.menu-text li{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:8px 0;font-size:15px;color:var(--ink-2);border-bottom:1px dashed var(--line)}
-.menu-text li:last-child{border-bottom:0}
-.menu-text li small{display:block;color:var(--ink-3);font-size:12.5px}
-.menu-text .p{flex:0 0 auto;text-align:right;font-weight:700;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums}
-.menu-text .p small{color:var(--accent-text);font-weight:600}
-@media(min-width:760px){
- :root{--gutter:2rem}
- .wrap{padding-bottom:56px}
- .sticky{display:none}
- .hero{grid-template-columns:minmax(0,1fr) 300px;column-gap:56px;padding:56px 0 72px;align-items:start}
- .hero>*{grid-column:1}
- .logo-orb,.logo-stage{grid-column:2;grid-row:1/span 7;width:300px;margin:0}
- .ribbon,.pulse{margin-top:32px}
- main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:56px}
- main #menu,main #faq,main #facts{grid-column:1/-1}
- .pager .page{flex-basis:38%}
- .pager{scrollbar-width:thin;scrollbar-color:var(--line-strong) transparent}
- .pager::-webkit-scrollbar{display:block;height:6px}
- .pager::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:999px}
- .rule li{grid-template-columns:8.5rem 1fr}
+
+/* happy hour band */
+.hh{margin-top:72px;background:var(--mist)}
+.hh .wrap{padding-block:40px}
+.hh .disp{font-size:clamp(46px,13vw,96px)}
+.hh ul{list-style:none;padding:0;margin-top:16px;display:grid;gap:8px;font-size:17px;font-weight:600}
+.hh li span{color:var(--ink-2);font-weight:500;white-space:nowrap}
+
+/* guests say */
+.rating{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:12px}
+.rating strong{font-family:var(--display);font-weight:400;font-size:56px;line-height:1}
+.rating span{color:var(--ink-2);font-size:15px}
+.quotes{list-style:none;padding:0;margin-top:22px;display:grid;gap:22px}
+.quotes li{border-top:1.5px solid var(--forest);padding-top:14px}
+.quotes q{display:block;font-size:17px;line-height:1.5;quotes:"“" "”"}
+.quotes cite{display:block;margin-top:8px;font-style:normal;font-size:13px;font-weight:600;color:var(--ink-2)}
+.more{margin-top:18px;font-size:15px}
+.more a{color:var(--teal-text);font-weight:600;text-underline-offset:3px}
+
+/* find us */
+.go{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px;max-width:30rem}
+.go .btn{min-height:50px;padding:0 16px}
+.facts{margin-top:28px;display:grid;gap:0}
+.facts div{display:grid;grid-template-columns:7.5rem minmax(0,1fr);gap:12px;padding:14px 0;border-top:1px solid var(--line)}
+.facts dt{color:var(--ink-2);font-size:14px;font-weight:500}
+.facts dd{font-weight:600;font-size:15.5px;line-height:1.45;margin:0}
+.facts dd a{color:var(--teal-text);text-underline-offset:3px}
+.facts [lang="zh"]{display:block;font-weight:500;color:var(--ink-2);font-size:14px;margin-top:2px}
+
+/* good to know */
+.faq{margin-top:18px;border-top:1.5px solid var(--forest);max-width:52rem}
+.faq details,.menu-text details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;font-weight:600;font-size:16px;line-height:1.4;min-height:54px;padding:15px 2px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";flex:0 0 auto;width:8px;height:8px;margin:.45em 4px 0 auto;border-right:2px solid var(--forest);border-bottom:2px solid var(--forest);transform:rotate(45deg);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(225deg)}
+.faq p{color:var(--ink-2);font-size:15.5px;padding:0 2px 16px;max-width:42rem}
+.faq p [lang="zh"]{display:block;margin-top:6px}
+
+/* book */
+.final{padding-top:72px;padding-bottom:88px}
+.final .btn{margin-top:20px;width:100%;max-width:26rem}
+.final .hint{margin-top:12px;font-size:14px;color:var(--ink-2)}
+
+/* footer: night again */
+footer{background:var(--night);color:#D3DFDB;font-size:14px}
+footer .wrap{padding-block:40px calc(110px + env(safe-area-inset-bottom));display:grid;gap:18px}
+footer .f-brand{display:flex;align-items:center;gap:10px;color:#fff;font-weight:700;font-size:17px}
+footer .f-brand img{width:40px;height:40px;border-radius:50%;background:#fff;padding:3px;object-fit:contain}
+footer p{max-width:36rem}
+footer a{color:#fff;text-underline-offset:3px}
+footer .co{color:#A9BAB4;font-size:12.5px}
+a[href^="tel:"]{white-space:nowrap}
+
+/* phone booking bar: only once the hero button has scrolled away */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px max(var(--gutter),env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom)) max(var(--gutter),env(safe-area-inset-left));background:rgba(255,255,255,.95);border-top:1px solid var(--line);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);transform:translateY(110%);transition:transform .25s ease}
+.sticky.show{transform:none}
+.sticky .btn{width:100%}
+
+/* menu in text (for search and screen readers) */
+.menu-text h3{font-size:1.15rem;font-weight:700}
+.menu-text summary{list-style:none;font-weight:600}
+.menu-text ul{list-style:none;padding:0}
+.menu-text li{display:flex;justify-content:space-between;gap:14px}
+
+@media (min-width:900px){
+  :root{--gutter:56px}
+  .nav{top:26px;left:max(var(--gutter),calc(50vw - 600px + var(--gutter)));right:max(var(--gutter),calc(50vw - 600px + var(--gutter)))}
+  .cx-hero{min-height:min(100vh,900px);padding:120px max(var(--gutter),calc(50vw - 600px + var(--gutter))) 64px}
+  .names{font-size:min(6.4vw,118px);display:flex;flex-wrap:wrap;column-gap:.32em}
+  .names span{display:inline}
+  .names span+span::before{content:"·";color:var(--teal);margin-right:.32em}
+  .cta-row{display:flex;align-items:center;gap:24px}
+  .cta-row .btn{width:auto}
+  .cta-row .proof-line{margin-top:22px}
+  .sec{padding-top:96px}
+  .week-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:64px;align-items:start}
+  .feature{display:block;position:sticky;top:24px;margin:0}
+  .feature img{border-radius:16px;box-shadow:0 24px 50px -24px rgba(11,43,39,.55);width:100%;height:auto}
+  .feature figcaption{margin-top:10px;font-size:14px;font-weight:600;color:var(--teal-text)}
+  .week-off .feature{display:none}
+  .nights a{grid-template-columns:90px minmax(0,1fr) 56px;padding:14px 0}
+  .nights .who{font-size:30px}
+  .nights picture{width:56px}
+  .nights .now a{margin:0 -18px;padding:16px 18px;border-radius:12px}
+  .eat-head{display:grid;grid-template-columns:auto minmax(0,1fr);gap:56px;align-items:end}
+  .dishes{grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px}
+  .dish .ph{aspect-ratio:4/3}
+  .clams{background-size:175%;background-position:50% 64%}
+  .pasta{background-size:150%;background-position:50% 38%}
+  .pager .page{flex-basis:31%}
+  .pager{scrollbar-width:thin;scrollbar-color:var(--line-strong) transparent}
+  .hh .wrap{display:grid;grid-template-columns:auto minmax(0,1fr);gap:56px;align-items:center}
+  .hh ul{margin-top:0;grid-template-columns:1fr 1fr;gap:10px 32px}
+  .quotes{grid-template-columns:repeat(3,1fr);gap:32px}
+  .visit-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:start}
+  .facts{margin-top:0}
+  .facts div{grid-template-columns:9rem minmax(0,1fr)}
+  .sticky{display:none}
+  footer .wrap{grid-template-columns:auto minmax(0,1fr);column-gap:56px;padding-bottom:48px}
 }
-@media(max-width:380px){.rule li{grid-template-columns:1fr;gap:4px}.ribbon,.pulse{grid-template-columns:1fr}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
-.nav-brand .lock,.nav-brand .lock span,.h1-brand .lock{opacity:1}.h1-brand:has(.lock){opacity:1}.lock{display:inline-flex;align-items:flex-start;gap:.35em;line-height:1;color:#14453d}.lock .lt{font-weight:500;letter-spacing:-.01em}.lock .wm{display:block;height:2.1em;width:auto;margin:-.08em 0 -1.1em}.nav-brand{font-size:1.15rem;padding-bottom:.6em}.lock-lg{font-size:1.6rem;margin:0 0 .9em}.h1-brand .lock-lg{display:inline-flex}.reel{margin:24px 0 0;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--line);background:#111;aspect-ratio:16/9}.reel video{display:block;width:100%;height:100%;object-fit:cover}.reel-cap{margin-top:8px;font-size:12.5px;font-weight:600;color:var(--accent-text)}.final{margin-top:48px;padding:28px 0 0;border-top:1px solid var(--line)}.final h2{font-size:clamp(1.6rem,6vw,2.1rem);font-weight:700;letter-spacing:-.03em;margin-bottom:14px}.final .btn{width:100%;max-width:26rem}.v .lk{color:var(--accent-text);font-weight:600;text-underline-offset:3px}.tabs{display:inline-flex;margin-top:16px;border:1px solid var(--line-strong);border-radius:var(--r-sm);overflow:hidden}.tab{appearance:none;border:0;background:var(--paper);color:var(--ink-2);font:inherit;font-weight:600;font-size:14.5px;min-height:44px;padding:0 20px;cursor:pointer}.tab+.tab{border-left:1px solid var(--line-strong)}.tab[aria-selected="true"]{background:var(--btn);color:var(--on-btn)}.pager-wrap[hidden]{display:none}.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-@media (max-width:759px){.logo-orb,.logo-stage{width:64px;margin-bottom:14px}}
-.proof-line{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:14px;font-weight:600;margin:0 0 18px;padding:0;list-style:none}
-.proof-line li{display:flex;align-items:center;gap:6px}
-.proof-line a{color:inherit}
-.hero .hint{font-size:13px;opacity:.75;margin-top:8px}
-.week-stale .days{display:none}
-</style>
+@media (max-width:380px){.facts div{grid-template-columns:1fr;gap:2px}.go{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -372,39 +421,7 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);font-si
     ]
   }
   </script>
-<link rel="preload" as="font" type="font/woff2" href="assets/fonts/instrument-sans-latin.woff2" crossorigin><link rel="preload" as="image" href="assets/video/nana-live-poster.jpg" media="(min-width:760px)" fetchpriority="high"><link rel="preload" as="image" href="assets/video/nana-live-m-poster.jpg" media="(max-width:759px)" fetchpriority="high">
-<style>:root{--paper:#0B2B27;--mist:#103731;--mist-deep:#14423b;--line:#1f4d46;--line-strong:#2a5f57;--ink:#f3f6f5;--ink-2:#cdd8d4;--ink-3:#a9b8b3;--accent-text:#3FB4A7;--accent-soft:#103731;--rule:#3FB4A7;--hero:#0B2B27;--on-hero:#f3f6f5;--logo-bg:#fff}
-html,body{background:#0B2B27;color:var(--ink)}
-h2{font-family:"Instrument Sans",system-ui,sans-serif;font-weight:700;letter-spacing:-.01em}
-.cx-hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:space-between;padding:22px 5vw 7vh;color:#fff;overflow:hidden;isolation:isolate}
-.cx-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;z-index:-2}
-@media(max-width:759px){.cx-bg{object-position:center 40%}}video.cx-bg{opacity:0;transition:opacity .8s}video.cx-bg.on{opacity:1}
-.cx-hero:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.6),rgba(0,0,0,0) 28%,rgba(0,0,0,.15) 45%,#0B2B27 97%)}
-.cx-nav{display:flex;justify-content:space-between;align-items:center;gap:12px}
-.cx-brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-family:"Instrument Sans",system-ui,sans-serif;font-size:24px;white-space:nowrap}
-.cx-brand img{width:44px;height:44px;border-radius:50%;background:#fff;object-fit:contain;padding:3px}
-.cx-book{background:#fff;color:#172923;padding:10px 18px;border-radius:99px;text-decoration:none;font-size:14px;font-weight:600;white-space:nowrap}
-.cx-copy{max-width:60rem}
-.cx-tonight{display:inline-flex;align-items:center;gap:8px;background:rgba(0,0,0,.45);border:1px solid #3FB4A7;color:#fff;border-radius:99px;padding:7px 14px;font-size:13.5px;text-decoration:none;margin-bottom:16px;backdrop-filter:blur(6px)}
-.cx-tonight:before{content:"";width:8px;height:8px;border-radius:50%;background:#3FB4A7;box-shadow:0 0 0 4px #3FB4A744}
-.cx-kick{color:#3FB4A7;font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;margin:0 0 12px}
-.cx-hero h1{font-family:"Instrument Sans",system-ui,sans-serif;font-weight:700;letter-spacing:-.035em;font-size:clamp(40px,6.6vw,96px);line-height:1;letter-spacing:-.02em;margin:0;max-width:12em;color:#fff}
-.cx-hero h1 i{font-style:normal;font-weight:700;color:#3FB4A7}
-.cx-sub{margin:16px 0 0;font-size:17px;color:#eef3f1}.cx-sub span{display:block;font-size:14px;opacity:.8;margin-top:4px}
-.cx-cta{margin-top:22px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px}
-.cx-cta .btn{width:auto;padding:16px 28px;border-radius:99px}
-.cx-cta .hint{margin:0;color:#eef3f1;font-size:14px}
-.cx-facts{display:flex;flex-wrap:wrap;gap:6px 18px;list-style:none;padding:0;margin:18px 0 0;font-size:14px;color:#d9e3e0}.cx-facts a{color:inherit}
-.cx-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:8px 0 0}
-.cx-cards figure{margin:0;border-radius:18px;overflow:hidden;position:relative;background:#000}
-.cx-cards img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 30%}
-.cx-cards figcaption{position:absolute;left:0;right:0;bottom:0;padding:16px;color:#fff;font-weight:600;background:linear-gradient(transparent,rgba(0,0,0,.85))}
-.btn-primary{background:#3FB4A7;color:#0B2B27}
-.sticky{background:#0B2B27ee;border-top:1px solid var(--line)}
-@media(max-width:759px){.cx-cards{grid-template-columns:1fr 1fr}.cx-cards figure:first-child{grid-column:1/-1}.cx-cards figure:first-child img{aspect-ratio:16/10}.cx-hero{padding-bottom:4vh}.cx-cta .btn{width:100%;text-align:center}.cx-brand span{font-size:20px}}
-.cx-cards{grid-template-columns:1fr!important}.cx-cards figure{grid-column:1/-1}.cx-cards img{aspect-ratio:21/9!important;object-position:center 45%}@media(max-width:759px){.cx-cards img{aspect-ratio:16/10!important}}
-.cx-hero{justify-content:flex-end;padding-top:96px}.cx-nav{position:absolute;top:22px;left:5vw;right:5vw}
-</style>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/anton-latin.woff2" crossorigin><link rel="preload" as="image" href="assets/video/nana-live-poster.jpg" media="(min-width:760px)" fetchpriority="high"><link rel="preload" as="image" href="assets/video/nana-live-m-poster.jpg" media="(max-width:759px)" fetchpriority="high">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17948641359"></script>
 <script>
@@ -419,81 +436,160 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
   <header class="cx-hero">
     <picture><source media="(max-width:759px)" srcset="assets/video/nana-live-m-poster.jpg"><img class="cx-bg" src="assets/video/nana-live-poster.jpg" alt="" fetchpriority="high" decoding="async"></picture>
     <video class="cx-bg" muted loop playsinline autoplay preload="metadata" aria-hidden="true" data-webm="assets/video/nana-live.webm" data-mp4="assets/video/nana-live.mp4" data-mwebm="assets/video/nana-live-m.webm" data-mmp4="assets/video/nana-live-m.mp4"></video>
-    <nav class="cx-nav" aria-label="Brand"><a class="cx-brand" href="./"><img src="assets/img/logo-300.webp" width="44" height="44" alt=""><span>nana</span></a><a class="cx-book" href="https://wa.me/60128974221?text=Hi%20nana%2C%20I%27d%20like%20to%20book.%20Date%3A%20%20Time%3A%20%20Pax%3A" target="_blank" rel="noopener">Book a table</a></nav>
-    <div class="cx-copy">
-      <a class="cx-tonight" id="cx-tonight" href="#week" hidden>Tonight · live band from 9pm</a>
-      <p class="cx-kick">SS13 Subang Jaya · live band nightly</p>
-      <h1>The night you’ll <i>keep talking about</i> starts here.</h1>
-      <p class="cx-sub">Live band from 9pm, every night in SS13.<span lang="zh">梳邦 SS13 · 每晚 9 点开唱。</span></p>
-      <div class="cx-cta"><a class="btn btn-primary" href="https://wa.me/60128974221?text=Hi%20nana%2C%20I%27d%20like%20to%20book.%20Date%3A%20%20Time%3A%20%20Pax%3A" target="_blank" rel="noopener">Book my table on WhatsApp / 订位</a><p class="hint">No deposit · table held 15 min · walk-ins welcome too</p></div>
-      <ul class="cx-facts"><li>★ 4.7 · 221 Google reviews</li><li>Happy hour before 8:30pm</li><li><a href="https://waze.com/ul?q=nana%20SS13" target="_blank" rel="noopener">📍 SS13 Subang Jaya · Waze</a></li></ul>
+    <nav class="nav" aria-label="nana"><a class="brand" href="./"><img class="logo" src="assets/img/logo-300.webp" width="44" height="44" alt="nana"><picture><source type="image/webp" srcset="assets/img/wordmark-480.webp"><img class="wm" src="assets/img/wordmark-480.png" width="49" height="30" alt="研酒所"></picture></a><a class="pill" href="https://wa.me/60128974221?text=Hi%20nana%2C%20I%27d%20like%20to%20book.%20Date%3A%20%20Time%3A%20%20Pax%3A" target="_blank" rel="noopener">Book a table</a></nav>
+    <div class="hero-copy">
+      <p class="tonight" id="hero-when">Live band every night <span lang="zh">每晚现场乐队</span></p>
+      <h1 class="names disp" id="hero-names"><span>Live band</span><span>every night</span></h1>
+      <p class="when">Live from 9pm · dinner from 5pm · open till 2am<span lang="zh">9 点开唱 · 5 点开饭 · 营业到凌晨 2 点</span></p>
+      <div class="cta-row"><a class="btn" id="hero-book" href="https://wa.me/60128974221?text=Hi%20nana%2C%20I%27d%20like%20to%20book.%20Date%3A%20%20Time%3A%20%20Pax%3A" target="_blank" rel="noopener">Book a table on WhatsApp <span lang="zh">订位</span></a><p class="proof-line"><b>★ 4.7</b> from 221 Google reviews · SS13 Subang Jaya</p></div>
     </div>
   </header>
-  <div class="wrap">
 
-    <section class="cx-cards" aria-label="A night here"><figure><picture><source type=image/webp srcset=assets/img/live-frame.webp><img src="assets/img/live-frame.jpg" loading="lazy" decoding="async" alt="Live band, 9pm–12:15am nightly"></picture><figcaption>Live band, 9pm–12:15am nightly</figcaption></figure></section>
-    <main id="main">
-
-      <section class="block week" id="week" aria-labelledby="week-h">
-        <p class="block-label">This week</p>
-        <h2 id="week-h">Line-up, 26 Oct–1 Nov<em>本周阵容</em></h2>
-        <div class="days" id="days">
-          <div class="day" data-date="2026-10-26"><b>Mon 26 Oct</b><div class="poster"><picture><source type="image/webp" srcset="assets/lineup/mon-26oct-540.webp 540w, assets/lineup/mon-26oct-1024.webp 1024w" sizes="(min-width:760px) 240px, 78vw"><img src="assets/lineup/mon-26oct-1024.jpg" srcset="assets/lineup/mon-26oct-540.jpg 540w, assets/lineup/mon-26oct-1024.jpg 1024w" sizes="(min-width:760px) 240px, 78vw" width="1024" height="1280" loading="lazy" decoding="async" alt="nana 研酒所 live line-up poster, Mon 26 October"></picture></div></div>
-          <div class="day" data-date="2026-10-27"><b>Tue 27 Oct</b><div class="poster"><picture><source type="image/webp" srcset="assets/lineup/tue-27oct-540.webp 540w, assets/lineup/tue-27oct-1024.webp 1024w" sizes="(min-width:760px) 240px, 78vw"><img src="assets/lineup/tue-27oct-1024.jpg" srcset="assets/lineup/tue-27oct-540.jpg 540w, assets/lineup/tue-27oct-1024.jpg 1024w" sizes="(min-width:760px) 240px, 78vw" width="1024" height="1280" loading="lazy" decoding="async" alt="nana 研酒所 live line-up poster, Tue 27 October"></picture></div></div>
-          <div class="day" data-date="2026-10-28"><b>Wed 28 Oct</b><div class="poster"><picture><source type="image/webp" srcset="assets/lineup/wed-28oct-540.webp 540w, assets/lineup/wed-28oct-1024.webp 1024w" sizes="(min-width:760px) 240px, 78vw"><img src="assets/lineup/wed-28oct-1024.jpg" srcset="assets/lineup/wed-28oct-540.jpg 540w, assets/lineup/wed-28oct-1024.jpg 1024w" sizes="(min-width:760px) 240px, 78vw" width="1024" height="1280" loading="lazy" decoding="async" alt="nana 研酒所 live line-up poster, Wed 28 October"></picture></div></div>
-          <div class="day" data-date="2026-10-29"><b>Thu 29 Oct</b><div class="poster"><picture><source type="image/webp" srcset="assets/lineup/thu-29oct-540.webp 540w, assets/lineup/thu-29oct-1024.webp 1024w" sizes="(min-width:760px) 240px, 78vw"><img src="assets/lineup/thu-29oct-1024.jpg" srcset="assets/lineup/thu-29oct-540.jpg 540w, assets/lineup/thu-29oct-1024.jpg 1024w" sizes="(min-width:760px) 240px, 78vw" width="1024" height="1280" loading="lazy" decoding="async" alt="nana 研酒所 live line-up poster, Thu 29 October"></picture></div></div>
-          <div class="day" data-date="2026-10-30"><b>Fri 30 Oct</b><div class="poster"><picture><source type="image/webp" srcset="assets/lineup/fri-30oct-540.webp 540w, assets/lineup/fri-30oct-1024.webp 1024w" sizes="(min-width:760px) 240px, 78vw"><img src="assets/lineup/fri-30oct-1024.jpg" srcset="assets/lineup/fri-30oct-540.jpg 540w, assets/lineup/fri-30oct-1024.jpg 1024w" sizes="(min-width:760px) 240px, 78vw" width="1024" height="1280" loading="lazy" decoding="async" alt="nana 研酒所 live line-up poster, Fri 30 October"></picture></div></div>
-          <div class="day" data-date="2026-10-31"><b>Sat 31 Oct</b><div class="poster"><picture><source type="image/webp" srcset="assets/lineup/sat-31oct-540.webp 540w, assets/lineup/sat-31oct-1024.webp 1024w" sizes="(min-width:760px) 240px, 78vw"><img src="assets/lineup/sat-31oct-1024.jpg" srcset="assets/lineup/sat-31oct-540.jpg 540w, assets/lineup/sat-31oct-1024.jpg 1024w" sizes="(min-width:760px) 240px, 78vw" width="1024" height="1280" loading="lazy" decoding="async" alt="nana 研酒所 live line-up poster, Sat 31 October"></picture></div></div>
-          <div class="day" data-date="2026-11-01"><b>Sun 1 Nov</b><div class="poster"><picture><source type="image/webp" srcset="assets/lineup/sun-1nov-540.webp 540w, assets/lineup/sun-1nov-1024.webp 1024w" sizes="(min-width:760px) 240px, 78vw"><img src="assets/lineup/sun-1nov-1024.jpg" srcset="assets/lineup/sun-1nov-540.jpg 540w, assets/lineup/sun-1nov-1024.jpg 1024w" sizes="(min-width:760px) 240px, 78vw" width="1024" height="1280" loading="lazy" decoding="async" alt="nana 研酒所 live line-up poster, Sun 1 November"></picture></div></div>
+  <main id="main">
+    <section class="sec wrap" id="week" aria-labelledby="week-h">
+      <div class="week-grid">
+        <div>
+          <h2 class="sec-h disp" id="week-h">This week <span lang="zh">本周阵容</span></h2>
+          <p class="sec-sub" id="week-sub">Live band every night, 9pm to 12:15am. Tap a night for its poster.</p>
+          <!-- Each Monday: replace these 7 rows (date, names, poster files). Tonight's names in the
+               hero, the "Tonight" row, the poster beside the list and the event markup for search
+               engines all read from these rows. After the last date the list hides by itself. -->
+          <ol class="nights" id="nights">
+            <li data-date="2026-10-26"><a href="assets/lineup/mon-26oct-1024.jpg" target="_blank" rel="noopener"><span class="d">Mon<b>26</b></span><span class="who">Yining · Alex Low</span><picture><source type="image/webp" srcset="assets/lineup/mon-26oct-540.webp"><img class="thumb" src="assets/lineup/mon-26oct-540.jpg" width="56" height="70" loading="lazy" decoding="async" alt="Poster, Mon 26 Oct"></picture></a></li>
+            <li data-date="2026-10-27"><a href="assets/lineup/tue-27oct-1024.jpg" target="_blank" rel="noopener"><span class="d">Tue<b>27</b></span><span class="who">Daphne · Jason</span><picture><source type="image/webp" srcset="assets/lineup/tue-27oct-540.webp"><img class="thumb" src="assets/lineup/tue-27oct-540.jpg" width="56" height="70" loading="lazy" decoding="async" alt="Poster, Tue 27 Oct"></picture></a></li>
+            <li data-date="2026-10-28"><a href="assets/lineup/wed-28oct-1024.jpg" target="_blank" rel="noopener"><span class="d">Wed<b>28</b></span><span class="who">Alex Low · Jovy</span><picture><source type="image/webp" srcset="assets/lineup/wed-28oct-540.webp"><img class="thumb" src="assets/lineup/wed-28oct-540.jpg" width="56" height="70" loading="lazy" decoding="async" alt="Poster, Wed 28 Oct"></picture></a></li>
+            <li data-date="2026-10-29"><a href="assets/lineup/thu-29oct-1024.jpg" target="_blank" rel="noopener"><span class="d">Thu<b>29</b></span><span class="who">Skipper · Jason</span><picture><source type="image/webp" srcset="assets/lineup/thu-29oct-540.webp"><img class="thumb" src="assets/lineup/thu-29oct-540.jpg" width="56" height="70" loading="lazy" decoding="async" alt="Poster, Thu 29 Oct"></picture></a></li>
+            <li data-date="2026-10-30"><a href="assets/lineup/fri-30oct-1024.jpg" target="_blank" rel="noopener"><span class="d">Fri<b>30</b></span><span class="who">Alphi · Sheelin · Erene</span><picture><source type="image/webp" srcset="assets/lineup/fri-30oct-540.webp"><img class="thumb" src="assets/lineup/fri-30oct-540.jpg" width="56" height="70" loading="lazy" decoding="async" alt="Poster, Fri 30 Oct"></picture></a></li>
+            <li data-date="2026-10-31"><a href="assets/lineup/sat-31oct-1024.jpg" target="_blank" rel="noopener"><span class="d">Sat<b>31</b></span><span class="who">Eugene · Danson · Sean</span><picture><source type="image/webp" srcset="assets/lineup/sat-31oct-540.webp"><img class="thumb" src="assets/lineup/sat-31oct-540.jpg" width="56" height="70" loading="lazy" decoding="async" alt="Poster, Sat 31 Oct"></picture></a></li>
+            <li data-date="2026-11-01"><a href="assets/lineup/sun-1nov-1024.jpg" target="_blank" rel="noopener"><span class="d">Sun<b>1</b></span><span class="who">Roey Kok · Celine Teo</span><picture><source type="image/webp" srcset="assets/lineup/sun-1nov-540.webp"><img class="thumb" src="assets/lineup/sun-1nov-540.jpg" width="56" height="70" loading="lazy" decoding="async" alt="Poster, Sun 1 Nov"></picture></a></li>
+          </ol>
         </div>
-      </section>
+        <figure class="feature" id="feature"><img src="assets/lineup/fri-30oct-1024.jpg" width="1024" height="1280" loading="lazy" decoding="async" alt="This week's line-up poster"><figcaption id="feature-cap">This week</figcaption></figure>
+      </div>
+    </section>
 
-      <section class="block" id="menu" aria-labelledby="menu-h">
-        <p class="block-label">Menu</p>
-        <h2 id="menu-h">Food &amp; drinks<em>菜单</em></h2>
+    <script>
+    // Reads the 7 rows above: marks tonight, puts tonight's names in the hero, shows the poster beside
+    // the list, and adds event markup for search engines. After the last date the list hides itself.
+    (function () {
+      var rows = [].slice.call(document.querySelectorAll("#nights li[data-date]"));
+      if (!rows.length) return;
+      var today = new Date(Date.now() + 8 * 36e5).toISOString().slice(0, 10);
+      if (rows[rows.length - 1].getAttribute("data-date") < today) {
+        document.getElementById("week").classList.add("week-off");
+        document.getElementById("week-sub").innerHTML = "Live band every night, 9pm to 12:15am. The week’s singers go up every Monday on <a href=\"https://instagram.com/nana.ss13\" target=\"_blank\" rel=\"noopener\">@nana.ss13</a>.";
+        return;
+      }
+      var who = function (li) {
+        return li.querySelector(".who").textContent.split("·").map(function (s) { return s.trim(); }).filter(Boolean);
+      };
+      var day = function (li) {
+        return new Date(li.getAttribute("data-date") + "T12:00:00+08:00").toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", timeZone: "Asia/Kuala_Lumpur" });
+      };
+      var now = null, next = null;
+      rows.forEach(function (li) {
+        var d = li.getAttribute("data-date");
+        if (d < today) li.classList.add("past");
+        else if (d === today) now = li;
+        else if (!next) next = li;
+      });
+      if (now) {
+        now.classList.add("now");
+        var tag = document.createElement("i");
+        tag.textContent = "Tonight";
+        now.querySelector(".d").appendChild(tag);
+        var h = document.getElementById("hero-names");
+        h.textContent = "";
+        who(now).forEach(function (n) { var s = document.createElement("span"); s.textContent = n; h.appendChild(s); });
+        document.getElementById("hero-when").innerHTML = "Tonight · " + day(now) + " <span lang=\"zh\">今晚</span>";
+      }
+      var feat = now || next;
+      if (feat) {
+        document.querySelector("#feature img").src = feat.querySelector("a").getAttribute("href");
+        document.getElementById("feature-cap").textContent = (feat === now ? "Tonight · " : "Next · ") + day(feat);
+      }
+      var base = "https://gonana.my/";
+      var place = { "@type": "Place", "name": "nana 研酒所", "address": { "@type": "PostalAddress", "streetAddress": "2, Jalan SS 13/3A, Subang Jaya Industrial Estate", "addressLocality": "Subang Jaya", "addressRegion": "Selangor", "postalCode": "47500", "addressCountry": "MY" } };
+      var events = rows.map(function (li) {
+        var d = li.getAttribute("data-date");
+        var end = new Date(Date.parse(d + "T00:00:00Z") + 864e5).toISOString().slice(0, 10);
+        var names = who(li);
+        return {
+          "@type": "MusicEvent",
+          "name": "Live band at nana 研酒所: " + names.join(", "),
+          "startDate": d + "T21:00:00+08:00",
+          "endDate": end + "T00:15:00+08:00",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "isAccessibleForFree": true,
+          "image": base + li.querySelector("a").getAttribute("href"),
+          "performer": names.map(function (n) { return { "@type": "Person", "name": n }; }),
+          "location": place,
+          "organizer": { "@type": "Organization", "name": "nana 研酒所", "url": base },
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "MYR", "availability": "https://schema.org/InStock", "url": base, "validFrom": d + "T00:00:00+08:00" }
+        };
+      });
+      var s = document.createElement("script");
+      s.type = "application/ld+json";
+      s.textContent = JSON.stringify({ "@context": "https://schema.org", "@graph": events });
+      document.head.appendChild(s);
+    })();
+    </script>
+
+    <section class="sec wrap" id="menu" aria-labelledby="menu-h">
+      <div class="eat-head">
+        <h2 class="lockup disp" id="menu-h"><span>Dinner first,</span><span>music later.</span></h2>
+        <p class="sec-sub">Kitchen from 5pm. Late-night ramen 9:30pm to 12:30am. Prices are before 10% service charge and SST.</p>
+      </div>
+      <div class="dishes">
+        <figure class="dish"><div class="ph clams" role="img" aria-label="Fresh clams in curry with shredded parmesan, in a hammered pot"></div><figcaption><b>Fresh clam pot <span lang="zh">啦啦锅</span></b><i>RM55</i></figcaption></figure>
+        <figure class="dish"><div class="ph roll" role="img" aria-label="Crispy salmon hand-roll on a wooden stand"></div><figcaption><b>Crispy hand-roll <span lang="zh">脆皮手卷</span><small>RM6.80 before 8:30pm</small></b><i>from RM12</i></figcaption></figure>
+        <figure class="dish"><div class="ph pasta" role="img" aria-label="Truffle pasta with seared engawa and mushroom"></div><figcaption><b>Truffle engawa pasta <span lang="zh">意面</span></b><i>RM42.80</i></figcaption></figure>
+      </div>
+      <div class="full-menu">
+        <h3>Full menu <span lang="zh">菜单</span></h3>
         <div class="tabs" role="tablist" aria-label="Menu"><button class="tab" role="tab" aria-selected="true" aria-controls="tab-food">Food <span lang="zh">餐单</span></button><button class="tab" role="tab" aria-selected="false" aria-controls="tab-drinks">Drinks <span lang="zh">酒单</span></button></div>
-        <div class="pager-wrap" id="tab-food" role="tabpanel" aria-label="Food menu">
-          <div class="pager-head">
-            <p class="pager-label">Swipe · tap a page for full size</p>
-            <div class="pager-nav">
-              <p class="pager-count" data-count="food">1 / 12</p>
-              <button class="pager-btn" type="button" data-prev="food" aria-label="Previous food menu page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
-              <button class="pager-btn" type="button" data-next="food" aria-label="Next food menu page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+          <div class="pager-wrap" id="tab-food" role="tabpanel" aria-label="Food menu">
+            <div class="pager-head">
+              <p class="pager-label">Swipe · tap a page for full size</p>
+              <div class="pager-nav">
+                <p class="pager-count" data-count="food">1 / 12</p>
+                <button class="pager-btn" type="button" data-prev="food" aria-label="Previous food menu page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+                <button class="pager-btn" type="button" data-next="food" aria-label="Next food menu page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+              </div>
+            </div>
+            <div class="pager" data-pager="food" aria-label="Food menu pages" tabindex="0">
+              <a class="page" href="assets/menu/food-p1.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p1-480.webp 480w, assets/img/food-p1-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p1-960.jpg" srcset="assets/img/food-p1-480.jpg 480w, assets/img/food-p1-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 1 of 12"></picture></a>
+              <a class="page" href="assets/menu/food-p2.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p2-480.webp 480w, assets/img/food-p2-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p2-960.jpg" srcset="assets/img/food-p2-480.jpg 480w, assets/img/food-p2-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 2 of 12"></picture></a>
+              <a class="page" href="assets/menu/food-p3.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p3-480.webp 480w, assets/img/food-p3-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p3-960.jpg" srcset="assets/img/food-p3-480.jpg 480w, assets/img/food-p3-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 3 of 12"></picture></a>
+              <a class="page" href="assets/menu/food-p4.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p4-480.webp 480w, assets/img/food-p4-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p4-960.jpg" srcset="assets/img/food-p4-480.jpg 480w, assets/img/food-p4-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 4 of 12"></picture></a>
+              <a class="page" href="assets/menu/food-p5.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p5-480.webp 480w, assets/img/food-p5-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p5-960.jpg" srcset="assets/img/food-p5-480.jpg 480w, assets/img/food-p5-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 5 of 12"></picture></a>
+              <a class="page" href="assets/menu/food-p6.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p6-480.webp 480w, assets/img/food-p6-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p6-960.jpg" srcset="assets/img/food-p6-480.jpg 480w, assets/img/food-p6-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 6 of 12"></picture></a>
+              <a class="page" href="assets/menu/food-p7.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p7-480.webp 480w, assets/img/food-p7-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p7-960.jpg" srcset="assets/img/food-p7-480.jpg 480w, assets/img/food-p7-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 7 of 12"></picture></a>
+              <a class="page" href="assets/menu/food-p8.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p8-480.webp 480w, assets/img/food-p8-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p8-960.jpg" srcset="assets/img/food-p8-480.jpg 480w, assets/img/food-p8-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 8 of 12"></picture></a>
+              <a class="page" href="assets/menu/food-p9.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p9-480.webp 480w, assets/img/food-p9-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p9-960.jpg" srcset="assets/img/food-p9-480.jpg 480w, assets/img/food-p9-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 9 of 12"></picture></a>
+              <a class="page" href="assets/menu/food-p10.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p10-480.webp 480w, assets/img/food-p10-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p10-960.jpg" srcset="assets/img/food-p10-480.jpg 480w, assets/img/food-p10-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 10 of 12"></picture></a>
+              <a class="page" href="assets/menu/food-p11.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p11-480.webp 480w, assets/img/food-p11-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p11-960.jpg" srcset="assets/img/food-p11-480.jpg 480w, assets/img/food-p11-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 11 of 12"></picture></a>
+              <a class="page" href="assets/menu/food-p12.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p12-480.webp 480w, assets/img/food-p12-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p12-960.jpg" srcset="assets/img/food-p12-480.jpg 480w, assets/img/food-p12-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 12 of 12"></picture></a>
             </div>
           </div>
-          <div class="pager" data-pager="food" aria-label="Food menu pages" tabindex="0">
-            <a class="page" href="assets/menu/food-p1.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p1-480.webp 480w, assets/img/food-p1-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p1-960.jpg" srcset="assets/img/food-p1-480.jpg 480w, assets/img/food-p1-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 1 of 12"></picture></a>
-            <a class="page" href="assets/menu/food-p2.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p2-480.webp 480w, assets/img/food-p2-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p2-960.jpg" srcset="assets/img/food-p2-480.jpg 480w, assets/img/food-p2-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 2 of 12"></picture></a>
-            <a class="page" href="assets/menu/food-p3.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p3-480.webp 480w, assets/img/food-p3-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p3-960.jpg" srcset="assets/img/food-p3-480.jpg 480w, assets/img/food-p3-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 3 of 12"></picture></a>
-            <a class="page" href="assets/menu/food-p4.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p4-480.webp 480w, assets/img/food-p4-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p4-960.jpg" srcset="assets/img/food-p4-480.jpg 480w, assets/img/food-p4-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 4 of 12"></picture></a>
-            <a class="page" href="assets/menu/food-p5.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p5-480.webp 480w, assets/img/food-p5-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p5-960.jpg" srcset="assets/img/food-p5-480.jpg 480w, assets/img/food-p5-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 5 of 12"></picture></a>
-            <a class="page" href="assets/menu/food-p6.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p6-480.webp 480w, assets/img/food-p6-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p6-960.jpg" srcset="assets/img/food-p6-480.jpg 480w, assets/img/food-p6-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 6 of 12"></picture></a>
-            <a class="page" href="assets/menu/food-p7.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p7-480.webp 480w, assets/img/food-p7-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p7-960.jpg" srcset="assets/img/food-p7-480.jpg 480w, assets/img/food-p7-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 7 of 12"></picture></a>
-            <a class="page" href="assets/menu/food-p8.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p8-480.webp 480w, assets/img/food-p8-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p8-960.jpg" srcset="assets/img/food-p8-480.jpg 480w, assets/img/food-p8-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 8 of 12"></picture></a>
-            <a class="page" href="assets/menu/food-p9.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p9-480.webp 480w, assets/img/food-p9-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p9-960.jpg" srcset="assets/img/food-p9-480.jpg 480w, assets/img/food-p9-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 9 of 12"></picture></a>
-            <a class="page" href="assets/menu/food-p10.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p10-480.webp 480w, assets/img/food-p10-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p10-960.jpg" srcset="assets/img/food-p10-480.jpg 480w, assets/img/food-p10-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 10 of 12"></picture></a>
-            <a class="page" href="assets/menu/food-p11.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p11-480.webp 480w, assets/img/food-p11-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p11-960.jpg" srcset="assets/img/food-p11-480.jpg 480w, assets/img/food-p11-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 11 of 12"></picture></a>
-            <a class="page" href="assets/menu/food-p12.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/food-p12-480.webp 480w, assets/img/food-p12-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/food-p12-960.jpg" srcset="assets/img/food-p12-480.jpg 480w, assets/img/food-p12-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1414" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 food menu page 12 of 12"></picture></a>
-          </div>
-        </div>
-        <div class="pager-wrap" id="tab-drinks" role="tabpanel" aria-label="Drinks menu" hidden>
-          <div class="pager-head">
-            <p class="pager-label">Swipe · tap a page for full size</p>
-            <div class="pager-nav">
-              <p class="pager-count" data-count="drinks">1 / 4</p>
-              <button class="pager-btn" type="button" data-prev="drinks" aria-label="Previous drinks menu page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
-              <button class="pager-btn" type="button" data-next="drinks" aria-label="Next drinks menu page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+          <div class="pager-wrap" id="tab-drinks" role="tabpanel" aria-label="Drinks menu" hidden>
+            <div class="pager-head">
+              <p class="pager-label">Swipe · tap a page for full size</p>
+              <div class="pager-nav">
+                <p class="pager-count" data-count="drinks">1 / 4</p>
+                <button class="pager-btn" type="button" data-prev="drinks" aria-label="Previous drinks menu page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+                <button class="pager-btn" type="button" data-next="drinks" aria-label="Next drinks menu page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+              </div>
+            </div>
+            <div class="pager" data-pager="drinks" aria-label="Drinks menu pages" tabindex="0">
+              <a class="page" href="assets/menu/drinks-p1.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/drinks-p1-480.webp 480w, assets/img/drinks-p1-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/drinks-p1-960.jpg" srcset="assets/img/drinks-p1-480.jpg 480w, assets/img/drinks-p1-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1415" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 drinks menu page 1 of 4"></picture></a>
+              <a class="page" href="assets/menu/drinks-p2.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/drinks-p2-480.webp 480w, assets/img/drinks-p2-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/drinks-p2-960.jpg" srcset="assets/img/drinks-p2-480.jpg 480w, assets/img/drinks-p2-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1415" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 drinks menu page 2 of 4"></picture></a>
+              <a class="page" href="assets/menu/drinks-p3.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/drinks-p3-480.webp 480w, assets/img/drinks-p3-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/drinks-p3-960.jpg" srcset="assets/img/drinks-p3-480.jpg 480w, assets/img/drinks-p3-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1415" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 drinks menu page 3 of 4"></picture></a>
+              <a class="page" href="assets/menu/drinks-p4.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/drinks-p4-480.webp 480w, assets/img/drinks-p4-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/drinks-p4-960.jpg" srcset="assets/img/drinks-p4-480.jpg 480w, assets/img/drinks-p4-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1415" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 drinks menu page 4 of 4"></picture></a>
             </div>
           </div>
-          <div class="pager" data-pager="drinks" aria-label="Drinks menu pages" tabindex="0">
-            <a class="page" href="assets/menu/drinks-p1.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/drinks-p1-480.webp 480w, assets/img/drinks-p1-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/drinks-p1-960.jpg" srcset="assets/img/drinks-p1-480.jpg 480w, assets/img/drinks-p1-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1415" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 drinks menu page 1 of 4"></picture></a>
-            <a class="page" href="assets/menu/drinks-p2.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/drinks-p2-480.webp 480w, assets/img/drinks-p2-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/drinks-p2-960.jpg" srcset="assets/img/drinks-p2-480.jpg 480w, assets/img/drinks-p2-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1415" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 drinks menu page 2 of 4"></picture></a>
-            <a class="page" href="assets/menu/drinks-p3.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/drinks-p3-480.webp 480w, assets/img/drinks-p3-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/drinks-p3-960.jpg" srcset="assets/img/drinks-p3-480.jpg 480w, assets/img/drinks-p3-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1415" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 drinks menu page 3 of 4"></picture></a>
-            <a class="page" href="assets/menu/drinks-p4.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="assets/img/drinks-p4-480.webp 480w, assets/img/drinks-p4-960.webp 960w" sizes="(min-width:760px) 380px, 88vw"><img src="assets/img/drinks-p4-960.jpg" srcset="assets/img/drinks-p4-480.jpg 480w, assets/img/drinks-p4-960.jpg 960w" sizes="(min-width:760px) 380px, 88vw" width="1415" height="2000" loading="lazy" decoding="async" alt="nana 研酒所 drinks menu page 4 of 4"></picture></a>
-          </div>
-        </div>
-
-        <div class="menu-text sr-only" id="menu-text">
+          <div class="menu-text sr-only" id="menu-text">
           <h3>The menu, in text <span lang="zh">菜单文字版</span></h3>
           <p>Prices in RM, before 10% service charge and SST. Copied from the September 2026 menu; if anything differs, the PDF is the latest.</p>
 
@@ -650,50 +746,90 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
             </ul>
           </details>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="block proof" id="proof" aria-labelledby="proof-h">
-        <p class="block-label">Guests say</p>
-        <h2 id="proof-h">Rated on Google<em>谷歌评价</em></h2>
-        <div class="rating"><strong>4.7</strong><span class="stars" aria-hidden="true">★</span><small>from 221 Google reviews · as of 23 Sep 2026</small></div>
-        <ul class="quotes">
-          <li><q>The staff were friendly, the service was attentive, and the atmosphere was very comfortable and relaxing.</q><cite>luxx studio · Google review</cite></li>
-          <li><q>Amazing selection and the friendliest staff around!</q><cite>harbock s. · Google review</cite></li>
-          <li><q>Very cheap food and alcohol before 8.30pm. Amazing service from the staff as well ❤️</q><cite>Jayden P. · Google review</cite></li>
+    <section class="hh" aria-labelledby="hh-h">
+      <div class="wrap">
+        <h2 class="disp" id="hh-h">Before 8:30pm</h2>
+        <ul>
+          <li>Beer bucket <span>buy 1 free 1</span></li>
+          <li>Guinness, 10 glasses <span>RM175</span></li>
+          <li>Crispy hand-rolls <span>from RM6.80</span></li>
+          <li>Pork chop, chicken chop <span>RM16.80</span></li>
         </ul>
-        <p class="week-note"><a href="https://maps.app.goo.gl/CddBMPbaehJuaard7" target="_blank" rel="noopener">Read all reviews on Google Maps</a></p>
-      </section>
+      </div>
+    </section>
 
-      <section class="block" id="visit" aria-labelledby="visit-h">
-        <p class="block-label">Visit</p>
-        <h2 id="visit-h">Plan your visit<em>来之前先看</em></h2>
-        <ul class="rule">
-          <li><span class="k">Hours</span><span class="v">5pm–2am daily · kitchen from 5pm · late-night ramen 9:30pm–12:30am</span></li>
-          <li><span class="k">Address</span><span class="v">2 Jalan SS 13/3A, Subang Jaya Industrial Estate<br>SS13, 47500 Subang Jaya, Selangor<br><a class="lk" href="https://maps.app.goo.gl/CddBMPbaehJuaard7" target="_blank" rel="noopener">Google Maps</a> · <a class="lk" href="https://waze.com/ul?q=nana%20SS13" target="_blank" rel="noopener">Waze “nana SS13”</a> · Grab “nana SS13”</span></li>
-          <li><span class="k">Happy hour</span><span class="v">Before 8:30pm · <span lang="zh">8:30pm 前</span><br>Buckets buy 1 free 1 · Guinness 10 glasses RM175 · hand-rolls from RM6.80 · chops RM16.80</span></li>
-          <li><span class="k">Age &amp; smoking</span><span class="v">Under-18 guests must leave by 8:30pm; strictly 18+ after · no cigarettes, vapes OK<br><span lang="zh">未满 18 岁须在 8:30pm 前离开，之后严格 18+。不可抽烟，电子烟 / vape 可以。</span></span></li>
-          <li><span class="k">Booking</span><span class="v">Walk-ins welcome daily; WhatsApp ahead on Fri/Sat/PH eves · no deposit, table held 15 minutes</span></li>
-          <li><span class="k">Stage sofa</span><span class="v">RM300 minimum · Fri/Sat/PH eves only<br>Weekdays &amp; the PH day itself: no sofa minimum</span></li>
-          <li><span class="k">Payment</span><span class="v">All payment types &amp; split bills OK · prices exclude service charge &amp; SST · no private room</span></li>
-          <li><span class="k">Bottle keeping</span><span class="v">Spirits 60 days · beer 30 days</span></li>
-          <li><span class="k">Seats</span><span class="v">About 350</span></li>
-          <li><span class="k">Nana Play</span><span class="v">Every RM100 on your bill earns a chip for fries, cocktails, even champagne; members get a birthday treat. <a class="lk" href="https://nana.pingan.today/">Join free</a><br><span lang="zh">账单每 RM100 赚 1 个筹码，免费加入，不用下载 App。</span></span></li>
-          <li><span class="k">Good to know</span><span class="v">Non-halal: the menu includes pork and alcohol</span></li>
-          <li><span class="k">Contact</span><span class="v"><a class="lk" href="tel:+60128974221">+60 12-897 4221</a> (call / WhatsApp) · <a class="lk" href="https://instagram.com/nana.ss13" target="_blank" rel="noopener">@nana.ss13</a></span></li>
-        </ul>
-      </section>
+    <section class="sec wrap" id="proof" aria-labelledby="proof-h">
+      <h2 class="sec-h disp" id="proof-h">Guests say <span lang="zh">谷歌评价</span></h2>
+      <div class="rating"><strong>4.7 ★</strong><span>from 221 Google reviews</span></div>
+      <ul class="quotes">
+        <li><q>The staff were friendly, the service was attentive, and the atmosphere was very comfortable and relaxing.</q><cite>luxx studio · Google review</cite></li>
+        <li><q>Amazing selection and the friendliest staff around!</q><cite>harbock s. · Google review</cite></li>
+        <li><q>Very cheap food and alcohol before 8.30pm. Amazing service from the staff as well ❤️</q><cite>Jayden P. · Google review</cite></li>
+      </ul>
+      <p class="more"><a href="https://maps.app.goo.gl/CddBMPbaehJuaard7" target="_blank" rel="noopener">Read all reviews on Google Maps</a></p>
+    </section>
 
-      <section class="final" id="book" aria-labelledby="book-h">
-        <h2 id="book-h">Book your table <span lang="zh" style="font-weight:500;color:var(--ink-3);font-size:.6em">订位</span></h2>
-        <a class="btn btn-primary" href="https://wa.me/60128974221?text=Hi%20nana%2C%20I%27d%20like%20to%20book.%20Date%3A%20%20Time%3A%20%20Pax%3A" target="_blank" rel="noopener">Book my table on WhatsApp / 订位</a>
-        <p class="hint">Include date, time &amp; pax. Confirmations come in English; chat in English or <span lang="zh">中文</span>.</p>
-      </section>
-    </main>
+    <section class="sec wrap" id="visit" aria-labelledby="visit-h">
+      <div class="visit-grid">
+        <div>
+          <h2 class="sec-h disp" id="visit-h">Find us <span lang="zh">地址</span></h2>
+          <p class="sec-sub">2 Jalan SS 13/3A, Subang Jaya Industrial Estate, SS13, 47500 Subang Jaya, Selangor. On Grab, search “nana SS13”.</p>
+          <div class="go">
+            <a class="btn" href="https://maps.app.goo.gl/CddBMPbaehJuaard7" target="_blank" rel="noopener">Google Maps</a>
+            <a class="btn btn-line" href="https://waze.com/ul?q=nana%20SS13" target="_blank" rel="noopener">Waze</a>
+          </div>
+        </div>
+        <dl class="facts">
+          <div><dt>Hours</dt><dd>5pm to 2am, every day<span lang="zh">每天 5pm 至凌晨 2am</span></dd></div>
+          <div><dt>Live band</dt><dd>9pm to 12:15am, every night</dd></div>
+          <div><dt>Kitchen</dt><dd>From 5pm · late-night ramen 9:30pm to 12:30am</dd></div>
+          <div><dt>Booking</dt><dd>Walk-ins welcome. On Fri, Sat and public-holiday eves, WhatsApp ahead. No deposit; we hold your table 15 minutes.</dd></div>
+          <div><dt>Paying</dt><dd>All payment types and split bills. Prices are before 10% service charge and SST.</dd></div>
+          <div><dt>Contact</dt><dd><a href="tel:+60128974221">+60 12-897 4221</a> (call or WhatsApp) · <a href="https://instagram.com/nana.ss13" target="_blank" rel="noopener">@nana.ss13</a></dd></div>
+        </dl>
+      </div>
+    </section>
 
-    <footer>nana 研酒所 · SS13, Subang Jaya</footer>
-  </div>
-  <div class="sticky">
-    <a class="btn btn-primary" href="https://wa.me/60128974221?text=Hi%20nana%2C%20I%27d%20like%20to%20book.%20Date%3A%20%20Time%3A%20%20Pax%3A" target="_blank" rel="noopener">Book my table on WhatsApp / 订位</a>
+    <section class="sec wrap" id="faq" aria-labelledby="faq-h">
+      <h2 class="sec-h disp" id="faq-h">Good to know <span lang="zh">须知</span></h2>
+      <div class="faq">
+        <details><summary>Can I bring someone under 18?</summary><p>Yes, in the early evening. Under-18 guests must leave by 8:30pm; the bar is strictly 18+ after that.<span lang="zh">可以在傍晚时段来，未满 18 岁须在 8:30pm 前离开，之后严格 18+。</span></p></details>
+        <details><summary>Can I smoke or vape?</summary><p>Vapes and e-cigarettes are fine. No cigarettes inside.<span lang="zh">电子烟 / vape 可以，场内不可抽烟。</span></p></details>
+        <details><summary>Is there a minimum spend?</summary><p>Only the stage sofa: RM300 on Fri, Sat and public-holiday eves. No sofa minimum on weekdays or on the public holiday itself.<span lang="zh">只有舞台沙发有 RM300 最低消费，且仅限周五、周六和公假前夕。</span></p></details>
+        <details><summary>Do I need to book? Is there a deposit?</summary><p>Walk-ins are welcome any day. On Fri, Sat and public-holiday eves, WhatsApp ahead to +60 12-897 4221. No deposit; we hold your table 15 minutes past your time. Chat in English or Chinese.<span lang="zh">每天都欢迎 walk-in；周五、周六和公假前夕建议先 WhatsApp 订位。无需订金，座位保留 15 分钟。</span></p></details>
+        <details><summary>When is the band on?</summary><p>Every night from 9pm to 12:15am. The week's line-up goes up every Monday, here and on Instagram @nana.ss13.<span lang="zh">每晚 9pm 至 12:15am。每周一在本网站和 Instagram 公布整周阵容。</span></p></details>
+        <details><summary>Is there a happy hour?</summary><p>Yes, before 8:30pm: beer buckets (5 bottles) buy 1 free 1, 10 glasses of Guinness for RM175, crispy hand-rolls from RM6.80, and the pork chop, chargrilled chicken and chicken chop at RM16.80.<span lang="zh">8:30pm 前：啤酒桶（5 瓶）买一送一，Guinness 10 杯 RM175，手卷 RM6.80 起，扒类 RM16.80。</span></p></details>
+        <details><summary>Can I keep an unfinished bottle?</summary><p>Yes. We keep spirits for 60 days and beer for 30 days.<span lang="zh">洋酒可寄存 60 天，啤酒可寄存 30 天。</span></p></details>
+        <details><summary>Is it halal?</summary><p>No. nana is a bar, and the menu includes pork and alcohol.<span lang="zh">非清真：菜单有猪肉和酒精饮料。</span></p></details>
+        <details><summary>Do you have drinks without alcohol?</summary><p>Yes. Most signature cocktails come alcohol-free, from RM25.<span lang="zh">大部分招牌鸡尾酒都有无酒精版本，RM25 起。</span></p></details>
+        <details><summary>Can I celebrate a birthday here?</summary><p>Yes. In your birthday month the Flaming Lamborghini is RM68 instead of RM128, and 3-inch cakes are RM28 to RM29. Nana Play members also get a free birthday treat. WhatsApp ahead to hold a table.<span lang="zh">生日月火焰兰博基尼只要 RM68（原价 RM128），3 寸蛋糕 RM28–29。Nana Play 会员另有免费生日礼。</span></p></details>
+        <details><summary>Is there a membership?</summary><p>Yes, Nana Play. Every RM100 on your bill earns a chip, and chips buy fries, cocktails, even a bottle of champagne, one reward a night. <a href="https://nana.pingan.today/">Join free</a> with a Malaysian phone number; nothing to download.<span lang="zh">账单每 RM100 赚 1 个筹码，免费加入，不用下载 App。</span></p></details>
+      </div>
+    </section>
+
+    <section class="final wrap" id="book" aria-labelledby="book-h">
+      <h2 class="sec-h disp" id="book-h">Book your table <span lang="zh">订位</span></h2>
+      <a class="btn" href="https://wa.me/60128974221?text=Hi%20nana%2C%20I%27d%20like%20to%20book.%20Date%3A%20%20Time%3A%20%20Pax%3A" target="_blank" rel="noopener">Book a table on WhatsApp <span lang="zh">订位</span></a>
+      <p class="hint">Send the date, time and number of people. We reply in English; chat in English or <span lang="zh">中文</span>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="f-brand"><img src="assets/img/logo-300.webp" width="40" height="40" alt="">nana 研酒所</div>
+      <div>
+        <p>2 Jalan SS 13/3A, Subang Jaya Industrial Estate, 47500 Subang Jaya, Selangor · open daily 5pm to 2am · <a href="tel:+60128974221">+60 12-897 4221</a> · <a href="https://instagram.com/nana.ss13" target="_blank" rel="noopener">@nana.ss13</a></p>
+        <p style="margin-top:8px"><a href="https://nana.pingan.today/">Join Nana Play free</a>: every RM100 on your bill earns a chip for fries, cocktails, even champagne.</p>
+        <p class="co" style="margin-top:14px">Nana Social Sdn Bhd (202501029913)</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="sticky" id="sticky">
+    <a class="btn" href="https://wa.me/60128974221?text=Hi%20nana%2C%20I%27d%20like%20to%20book.%20Date%3A%20%20Time%3A%20%20Pax%3A" target="_blank" rel="noopener">Book a table on WhatsApp <span lang="zh">订位</span></a>
   </div>
   <script>
     document.querySelectorAll("[data-pager]").forEach(function (pager) {
@@ -753,20 +889,14 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
     });
   </script>
   <script>
-  (function(){if(!("IntersectionObserver" in window)||matchMedia("(prefers-reduced-motion: reduce)").matches)return;
-  document.documentElement.classList.add("js");var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}})},{rootMargin:"0px 0px -8% 0px"});
-  document.querySelectorAll("main .block, .ribbon, .pulse, .policy-band").forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight){return;}el.classList.add("rv");io.observe(el);});})();
-  </script>
-  <script>
   (function(){var tabs=document.querySelectorAll('.tab');tabs.forEach(function(t){t.addEventListener('click',function(){tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',on);document.getElementById(x.getAttribute('aria-controls')).hidden=!on;});var p=document.querySelector('#'+t.getAttribute('aria-controls')+' .pager');if(p){p.scrollLeft=0;p.dispatchEvent(new Event('scroll'));}});});})();
   </script>
   <script>
-  (function(){var d=new Date(Date.now()+8*36e5).toISOString().slice(0,10),el=document.querySelector('.day[data-date="'+d+'"]');if(!el)return;el.classList.add("today");var c=document.getElementById("days");c.scrollLeft=el.offsetLeft-c.offsetLeft;})();
+  (function(){var st=function(){var v=document.querySelector("video.cx-bg"),n=navigator.connection||{};if(!v||n.saveData||matchMedia("(prefers-reduced-motion:reduce)").matches)return;var m=matchMedia("(max-width:759px)").matches;[["webm","video/webm"],["mp4","video/mp4"]].forEach(function(x){var s=document.createElement("source");s.src=v.dataset[(m?"m":"")+x[0]];s.type=x[1];v.appendChild(s);});v.poster=(m?document.querySelector(".cx-hero source[media]").srcset:document.querySelector("img.cx-bg").src);v.load();v.addEventListener("playing",function(){v.classList.add("on")});var p=v.play();if(p)p.catch(function(){});};requestAnimationFrame(function(){setTimeout(st,0)});})();
   </script>
-<script>(function(){var d=document.querySelectorAll('#days .day[data-date]');if(!d.length)return;var last=d[d.length-1].getAttribute('data-date');var t=new Date(Date.now()+8*3600e3).toISOString().slice(0,10);if(last<t){var s=document.getElementById('week');s.classList.add('week-stale');var h=document.getElementById('week-h');h.innerHTML='Live band every night<em>每晚现场乐队</em>';var n=s.querySelector('.week-note')||document.createElement('p');n.className='week-note';n.innerHTML='Tonight\u2019s singer is posted daily on <a href="https://instagram.com/nana.ss13" target="_blank" rel="noopener">@nana.ss13</a>.';if(!n.parentNode)h.after(n);}else{d.forEach(function(x){if(x.getAttribute('data-date')===t){x.querySelector('b').textContent='Tonight \u4eca\u665a \u00b7 '+x.querySelector('b').textContent;}});}})();</script>
-<script>
-(function(){var d=new Date(Date.now()+8*36e5).toISOString().slice(0,10),el=document.querySelector('.day[data-date="'+d+'"]'),t=document.getElementById("cx-tonight");if(el&&t){t.hidden=false;}
-var st=function(){var v=document.querySelector("video.cx-bg"),n=navigator.connection||{};if(!v||n.saveData||matchMedia("(prefers-reduced-motion:reduce)").matches)return;var m=matchMedia("(max-width:759px)").matches;[["webm","video/webm"],["mp4","video/mp4"]].forEach(function(x){var s=document.createElement("source");s.src=v.dataset[(m?"m":"")+x[0]];s.type=x[1];v.appendChild(s);});v.poster=(m?document.querySelector(".cx-hero source[media]").srcset:document.querySelector("img.cx-bg").src);v.load();v.addEventListener("playing",function(){v.classList.add("on")});var p=v.play();if(p)p.catch(function(){});};requestAnimationFrame(function(){setTimeout(st,0)});})();
-</script>
+  <script>
+  // The phone booking bar shows only while neither the hero button nor the last button is on screen.
+  (function(){var s=document.getElementById("sticky"),a=document.getElementById("hero-book"),b=document.querySelector(".final .btn");if(!s||!a||!b)return;if(!("IntersectionObserver" in window)){s.classList.add("show");return;}var seen={a:true,b:false},io=new IntersectionObserver(function(es){es.forEach(function(e){seen[e.target===a?"a":"b"]=e.isIntersecting;});s.classList.toggle("show",!seen.a&&!seen.b);});io.observe(a);io.observe(b);})();
+  </script>
 </body>
 </html>

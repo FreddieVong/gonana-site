@@ -396,6 +396,7 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
             var ev = {
               "@type": "MusicEvent",
               "name": "Live band at " + CFG.venue + ": " + who.join(", "),
+              "description": who.join(", ") + " live at " + CFG.venue + ", SS13 Subang Jaya. Live music " + clock(start) + "\u2013" + clock(CFG.end) + ". 18+ from 8:30pm.",
               "startDate": n.date + "T" + start + ":00+08:00",
               "endDate": addDay(n.date, 1) + "T" + CFG.end + ":00+08:00",
               "eventStatus": "https://schema.org/EventScheduled",

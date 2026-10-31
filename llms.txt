@@ -25,3 +25,10 @@
 - [Full menu in text, with prices](https://gonana.my/#menu-text)
 - [Food menu (PDF)](https://gonana.my/assets/menu/food.pdf)
 - [Drinks menu (PDF)](https://gonana.my/assets/menu/drinks.pdf)
+
+## Pages
+- [Live band bar Subang](https://gonana.my/live-band-bar-subang/)
+- [中文](https://gonana.my/zh/)
+- [Birthday & groups](https://gonana.my/birthday-venue-subang/)
+- [Happy hour](https://gonana.my/happy-hour-subang/)
+- [FAQ](https://gonana.my/faq/)

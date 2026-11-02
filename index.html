@@ -299,7 +299,7 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
   <div class="wrap">
     <header class="top">
       <a class="brand" href="./"><img class="mark" src="assets/img/logo-300.webp" width="52" height="38" alt="nana"><picture><source type="image/webp" srcset="assets/img/wordmark-480.webp"><img class="wm" src="assets/img/wordmark-480.png" width="49" height="30" alt="研酒所"></picture></a>
-      <div class="top-r"><button class="lang" id="lang" type="button" lang="zh" aria-label="切换到中文">中文</button><a class="top-book" id="top-book" href="https://wa.me/60128974221?text=Hi%20nana%2C%20I%27d%20like%20to%20book.%20Date%3A%20%20Time%3A%20%20Pax%3A" target="_blank" rel="noopener"><span class="i-en">Book</span><span class="i-zh" lang="zh">订位</span></a></div>
+      <div class="top-r"><button class="lang" id="lang" type="button" lang="zh" aria-label="切换到中文">中文</button><a class="top-book" id="top-book" href="https://wa.me/60128974221?text=Hi%20nana%2C%20I%27d%20like%20to%20book%20for%20tonight.%20Time%3A%20%20Pax%3A%20%20%28web%29" target="_blank" rel="noopener"><span class="i-en">Book</span><span class="i-zh" lang="zh">订位</span></a></div>
     </header>
 
     <main id="main">
@@ -323,7 +323,7 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
         <div class="right">
           <p class="slogan"><span>Dinner first,</span><span>music later.</span></p>
           <div class="who" aria-live="polite"><div class="when-row"><p id="who-when">This week · 9pm</p><button class="share" id="share" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span class="i-en">Send to friends</span><span class="i-zh" lang="zh">发给朋友</span></button></div><h1 id="who-names">Live band every night</h1><p class="week-note"><span class="i-en">The week's singers go up every Monday on <a href="https://instagram.com/nana.ss13" target="_blank" rel="noopener">@nana.ss13</a>.</span><span class="i-zh" lang="zh">每周一在 <a href="https://instagram.com/nana.ss13" target="_blank" rel="noopener">@nana.ss13</a> 公布当周歌手。</span></p></div>
-          <div class="cta"><a class="btn" id="hero-book" href="https://wa.me/60128974221?text=Hi%20nana%2C%20I%27d%20like%20to%20book.%20Date%3A%20%20Time%3A%20%20Pax%3A" target="_blank" rel="noopener"><span class="i-en">Book a table <span lang="zh">订位</span></span><span class="i-zh" lang="zh">订位</span></a><small><span class="i-en">Any night, sent to us on WhatsApp. No deposit.</span><span class="i-zh" lang="zh">哪一晚都可以订，WhatsApp 我们就好。无需订金。</span></small></div>
+          <div class="cta"><a class="btn" id="hero-book" href="https://wa.me/60128974221?text=Hi%20nana%2C%20I%27d%20like%20to%20book%20for%20tonight.%20Time%3A%20%20Pax%3A%20%20%28web%29" target="_blank" rel="noopener"><span class="i-en">Book a table <span lang="zh">订位</span></span><span class="i-zh" lang="zh">订位</span></a><small><span class="i-en">Any night, sent to us on WhatsApp. No deposit.</span><span class="i-zh" lang="zh">哪一晚都可以订，WhatsApp 我们就好。无需订金。</span></small></div>
           <figure class="reel"><div class="reel-frame"><video id="reel" muted loop playsinline preload="none" poster="assets/video/nana-room-poster.jpg" aria-label="A busy night at nana" data-zh-label="nana 热闹的一晚"><source src="assets/video/nana-room.mp4" type="video/mp4"></video></div><figcaption><span class="i-en">Live every night, 9pm to 12:15am</span><span class="i-zh" lang="zh">每晚现场演出，晚上9点至凌晨12点15分</span></figcaption></figure>
         </div>
       </section>
@@ -367,7 +367,8 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
 
         function setBook(iso) {
           var d = iso ? date(iso) : "";
-          var text = zh() ? CFG.hiZh + "，我想订位。日期：" + d + "  时间：  人数：" : CFG.hi + ", I'd like to book. Date: " + d + "  Time:  Pax:";
+          var tn = !iso || iso === state.today;
+          var text = (zh() ? CFG.hiZh + (tn ? "，我想订今晚的位。" : "，我想订位。日期：" + d + " ") + "时间：  人数：" : CFG.hi + (tn ? ", I'd like to book for tonight." : ", I'd like to book for " + d + ".") + " Time:  Pax:") + "  (web)";
           books.forEach(function (a) { if (a) a.href = "https://wa.me/" + CFG.wa + "?text=" + encodeURIComponent(text); });
         }
         function show(i) {
@@ -777,7 +778,7 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
         <section class="hh bday" id="birthday" aria-labelledby="bday-h">
           <h3 id="bday-h"><span class="i-en">Birthday?</span><span class="i-zh" lang="zh">生日？</span></h3>
           <p><span class="i-en">Tell us when you book: a Flaming Lamborghini on the house, and the band sings for you.</span><span class="i-zh" lang="zh">订位时告诉我们：送你一杯火焰兰博基尼，乐队为你唱生日歌。</span></p>
-          <p class="bday-go"><a class="more i-en" href="https://wa.me/60128974221?text=Hi%20nana%2C%20I%27d%20like%20to%20book%20a%20birthday%20table.%20Date%3A%20%20Time%3A%20%20Pax%3A" target="_blank" rel="noopener">Book a birthday table</a><a class="more i-zh" lang="zh" href="https://wa.me/60128974221?text=%E4%BD%A0%E5%A5%BD%20nana%EF%BC%8C%E6%88%91%E6%83%B3%E8%AE%A2%E7%94%9F%E6%97%A5%E6%A1%8C%E3%80%82%E6%97%A5%E6%9C%9F%EF%BC%9A%20%20%E6%97%B6%E9%97%B4%EF%BC%9A%20%20%E4%BA%BA%E6%95%B0%EF%BC%9A" target="_blank" rel="noopener">订生日桌</a></p>
+          <p class="bday-go"><a class="more i-en" href="https://wa.me/60128974221?text=Hi%20nana%2C%20I%27d%20like%20to%20book%20a%20birthday%20table.%20Date%3A%20%20Time%3A%20%20Pax%3A%20%20%28web%29" target="_blank" rel="noopener">Book a birthday table</a><a class="more i-zh" lang="zh" href="https://wa.me/60128974221?text=%E4%BD%A0%E5%A5%BD%20nana%EF%BC%8C%E6%88%91%E6%83%B3%E8%AE%A2%E7%94%9F%E6%97%A5%E6%A1%8C%E3%80%82%E6%97%A5%E6%9C%9F%EF%BC%9A%20%20%E6%97%B6%E9%97%B4%EF%BC%9A%20%20%E4%BA%BA%E6%95%B0%EF%BC%9A%20%20%28web%29" target="_blank" rel="noopener">订生日桌</a></p>
         </section>
         <section class="hh play" id="play" aria-labelledby="play-h">
           <h3 id="play-h"><span class="i-en">Your bill = free drinks</span><span class="i-zh" lang="zh">账单换免费酒水</span></h3>
@@ -816,7 +817,7 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
   <nav id="seo-links" style="text-align:center;font-size:14px;padding:12px"><a href="/live-band-bar-subang/">Live band bar Subang</a> · <a href="/zh/">中文</a> · <a href="/birthday-venue-subang/">Birthday & groups</a> · <a href="/happy-hour-subang/">Happy hour</a> · <a href="/faq/">FAQ</a></nav>
 </footer>
 
-  <div class="sticky" id="sticky"><a class="btn" id="sticky-book" href="https://wa.me/60128974221?text=Hi%20nana%2C%20I%27d%20like%20to%20book.%20Date%3A%20%20Time%3A%20%20Pax%3A" target="_blank" rel="noopener"><span class="i-en">Book a table <span lang="zh">订位</span></span><span class="i-zh" lang="zh">订位</span></a></div>
+  <div class="sticky" id="sticky"><a class="btn" id="sticky-book" href="https://wa.me/60128974221?text=Hi%20nana%2C%20I%27d%20like%20to%20book%20for%20tonight.%20Time%3A%20%20Pax%3A%20%20%28web%29" target="_blank" rel="noopener"><span class="i-en">Book a table <span lang="zh">订位</span></span><span class="i-zh" lang="zh">订位</span></a></div>
   <script>
     document.querySelectorAll("[data-pager]").forEach(function (pager) {
       var name = pager.getAttribute("data-pager");

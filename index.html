@@ -162,6 +162,7 @@ html.zh .i-en,html:not(.zh) .i-zh{display:none!important}
 .top-r{display:flex;align-items:center;gap:4px}
 .lang{appearance:none;border:0;background:none;font:inherit;font-weight:600;font-size:14px;color:var(--ink-2);min-height:44px;padding:0 12px;border-radius:var(--r-sm);cursor:pointer}
 .lang:hover{background:var(--mist)}
+.top-ev{display:inline-flex;align-items:center;text-decoration:none}
 .where b{font-weight:600;color:var(--ink-2)}
 .where b.open{color:var(--teal-text)}
 /* Send to friends: quiet, beside the night it sends */
@@ -177,6 +178,7 @@ html.zh .i-en,html:not(.zh) .i-zh{display:none!important}
 .play-go{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:18px}
 .deals .more{display:inline-flex;align-items:center;min-height:44px;color:var(--teal-text);font-weight:600;font-size:15px;text-decoration:underline;text-underline-offset:3px}
 .bday-go{margin-top:6px}
+.ev-line{margin-top:14px;padding-top:14px;border-top:1px solid var(--line-strong)}
 /* the room on a busy night: after Book on phones */
 .reel{margin:28px 0 0;max-width:360px}
 .reel-frame{aspect-ratio:4/5;border-radius:var(--r-md);overflow:hidden;background:var(--ink)}
@@ -313,7 +315,7 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
   <div class="wrap">
     <header class="top">
       <a class="brand" href="./"><img class="mark" src="assets/img/logo-300.webp" width="52" height="38" alt="nana"><picture><source type="image/webp" srcset="assets/img/wordmark-480.webp"><img class="wm" src="assets/img/wordmark-480.png" width="49" height="30" alt="研酒所"></picture></a>
-      <div class="top-r"><button class="lang" id="lang" type="button" lang="zh" aria-label="切换到中文">中文</button><a class="top-book" id="top-book" href="https://wa.me/60128974221?text=Hi%20nana%2C%20I%27d%20like%20to%20book%20for%20tonight.%0A%0AName%20%3A%0ATime%20%3A%0APax%20%3A" target="_blank" rel="noopener"><span class="i-en">Book</span><span class="i-zh" lang="zh">订位</span></a></div>
+      <div class="top-r"><a class="lang top-ev i-en" href="/events/">Events</a><a class="lang top-ev i-zh" lang="zh" href="/zh/events/">包场</a><button class="lang" id="lang" type="button" lang="zh" aria-label="切换到中文">中文</button><a class="top-book" id="top-book" href="https://wa.me/60128974221?text=Hi%20nana%2C%20I%27d%20like%20to%20book%20for%20tonight.%0A%0AName%20%3A%0ATime%20%3A%0APax%20%3A" target="_blank" rel="noopener"><span class="i-en">Book</span><span class="i-zh" lang="zh">订位</span></a></div>
     </header>
 
     <main id="main">
@@ -820,6 +822,8 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
           <h3 id="groups-h"><span class="i-en">Company dinners &amp; group nights</span><span class="i-zh" lang="zh">公司聚餐与团体夜</span></h3>
           <p><span class="i-en">Planning a company dinner or team night? Weekday tables, no deposit. WhatsApp us your date, time and number of guests.</span><span class="i-zh" lang="zh">计划公司聚餐或团队夜？平日订位，无需订金。用 WhatsApp 告知日期、时间和人数。</span></p>
           <p class="bday-go"><a class="more i-en" href="/group-party-subang/">Company dinners &amp; group nights</a><a class="more i-zh" lang="zh" href="/group-party-subang/">公司聚餐与团体夜</a></p>
+          <p class="ev-line"><span class="i-en">Want the whole venue? Up to 250 guests, Sunday to Thursday.</span><span class="i-zh" lang="zh">想包场？最多 250 人，周日到周四。</span></p>
+          <p class="bday-go"><a class="more i-en" href="/events/">How private events work</a><a class="more i-zh" lang="zh" href="/zh/events/">看包场详情</a></p>
         </section>
         <section class="hh play" id="play" aria-labelledby="play-h">
           <h3 id="play-h"><span class="i-en">Your bill = free drinks</span><span class="i-zh" lang="zh">账单换免费酒水</span></h3>
@@ -853,7 +857,7 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
   <footer>
     <div class="wrap">
       <p>nana 研酒所 · <a href="https://instagram.com/nana.ss13" target="_blank" rel="noopener">@nana.ss13</a> · <a href="https://www.facebook.com/profile.php?id=61580714355345" target="_blank" rel="noopener">Facebook</a> · <a href="https://play.gonana.my/?from=site" data-play><span class="i-en">Join Nana Play free</span><span class="i-zh" lang="zh">免费加入 Nana Play</span></a></p>
-      <nav id="seo-links" aria-label="More pages"><a href="/live-band-bar-subang/">Live band bar Subang</a> · <a href="/zh/">中文</a> · <a href="/birthday-venue-subang/">Birthday &amp; groups</a> · <a href="/date-night-subang/">Date night</a> · <a href="/happy-hour-subang/">Happy hour</a> · <a href="/late-night-food-subang/">Late-night food</a> · <a href="/group-party-subang/">Company dinners &amp; group nights</a> · <a href="/bar-near-sunway/">Near Sunway &amp; SS15</a> · <a href="/zh/shuangwei-jiuba/">双威附近酒吧</a> · <a href="/faq/">FAQ</a></nav>
+      <nav id="seo-links" aria-label="More pages"><a href="/live-band-bar-subang/">Live band bar Subang</a> · <a href="/zh/">中文</a> · <a href="/birthday-venue-subang/">Birthday &amp; groups</a> · <a href="/date-night-subang/">Date night</a> · <a href="/happy-hour-subang/">Happy hour</a> · <a href="/late-night-food-subang/">Late-night food</a> · <a href="/group-party-subang/">Company dinners &amp; group nights</a> · <a href="/events/">Private events</a> · <a href="/bar-near-sunway/">Near Sunway &amp; SS15</a> · <a href="/zh/shuangwei-jiuba/">双威附近酒吧</a> · <a href="/faq/">FAQ</a></nav>
       <p>NANA SOCIAL SDN. BHD. (202501029913) · No 2, Jln SS 13/3A, 47500 Subang Jaya, Selangor</p>
     </div>
 </footer>

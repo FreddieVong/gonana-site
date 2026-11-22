@@ -131,7 +131,7 @@ now = parse_now(args.now)
 night_today = (now + datetime.timedelta(hours=8 - 6)).date()
 monday = night_today - datetime.timedelta(days=night_today.weekday())
 this_week = {(monday + datetime.timedelta(days=k)).isoformat() for k in range(7)}
-app_nights = [n for n in week.get("nights", []) if n.get("date") in this_week and n.get("posterUrl")]
+app_nights = [n for n in week.get("nights", []) if n.get("date") in this_week and n.get("posterUrl") and not n.get("privateEvent")]
 
 out = out_root / "assets/lineup"
 out.mkdir(parents=True, exist_ok=True)

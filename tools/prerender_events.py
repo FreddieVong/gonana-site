@@ -2,8 +2,8 @@
 """Write this week's MusicEvent JSON-LD into index.html as static HTML (id="events-static"),
 from the fallback .night[data-date] posters, so crawlers and AI bots see events without JS.
 Run after the weekly line-up refresh:  python3 tools/prerender_events.py"""
-import re, json, datetime, pathlib
-p = pathlib.Path(__file__).resolve().parent.parent / "index.html"
+import re, json, datetime, pathlib, sys
+p = pathlib.Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else pathlib.Path(__file__).resolve().parent.parent / "index.html"
 h = p.read_text(encoding="utf-8")
 place = {"@type": "BarOrPub", "@id": "https://gonana.my/#venue", "name": "nana 研酒所",
          "address": {"@type": "PostalAddress", "streetAddress": "2, Jalan SS 13/3A, Subang Jaya Industrial Estate",

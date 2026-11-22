@@ -1,0 +1,47 @@
+{
+  "weekStart": "2026-11-23",
+  "nights": [
+    {
+      "date": "2026-11-23",
+      "names": "Jessie · Alex Low",
+      "startTime": "21:00",
+      "stem": "mon-23nov"
+    },
+    {
+      "date": "2026-11-24",
+      "names": "Daphne · Rice",
+      "startTime": "21:00",
+      "stem": "tue-24nov"
+    },
+    {
+      "date": "2026-11-25",
+      "names": "Lisz · Jack",
+      "startTime": "21:00",
+      "stem": "wed-25nov"
+    },
+    {
+      "date": "2026-11-26",
+      "names": "Jessie · Ava",
+      "startTime": "21:00",
+      "stem": "thu-26nov"
+    },
+    {
+      "date": "2026-11-27",
+      "names": "Alphi · Nicholas · Erene",
+      "startTime": "21:00",
+      "stem": "fri-27nov"
+    },
+    {
+      "date": "2026-11-28",
+      "names": "Sean · Danson · Eugene",
+      "startTime": "21:00",
+      "stem": "sat-28nov"
+    },
+    {
+      "date": "2026-11-29",
+      "names": "Yi Fen · Jia Hui",
+      "startTime": "21:00",
+      "stem": "sun-29nov"
+    }
+  ]
+}
